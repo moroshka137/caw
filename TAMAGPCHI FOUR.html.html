@@ -1,0 +1,1739 @@
+<html>
+<head>
+<title>TAMAGPCHI FOUR.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+TAMAGPCHI FOUR.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;ru&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+<span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot; </span><span class="s0">/&gt;</span>
+<span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot; </span><span class="s0">/&gt;</span>
+<span class="s0">&lt;title&gt;</span><span class="s1">🐣 Tamagotchi World</span><span class="s0">&lt;/title&gt;</span>
+<span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&amp;family=Nunito:wght@400;600;700&amp;display=swap&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;style&gt;</span>
+<span class="s1">:root{</span>
+  <span class="s1">--bg:#FFF6E5; --bg-accent:#FFE3C2; --primary:#FF9F68; --primary-hover:#FF7B3D;</span>
+  <span class="s1">--pink:#FFB6C1; --mint:#A8E6CF; --sky:#A8D8EA;</span>
+  <span class="s1">--text:#4A3728; --text-soft:#7A6553; --white:#fff;</span>
+  <span class="s1">--shadow:0 8px 24px rgba(255,159,104,.25);</span>
+  <span class="s1">--shadow-strong:0 12px 32px rgba(255,123,61,.35);</span>
+  <span class="s1">--radius:28px; --radius-sm:18px;</span>
+  <span class="s1">--room-wall:#3A342E; --room-wall-2:#4A423A; --room-floor:#2B241F;</span>
+  <span class="s1">--room-warm:#FFB67A; --room-bed:#E8E1D5; --room-bed-dark:#C9BFAF;</span>
+<span class="s1">}</span>
+<span class="s1">*{box-sizing:border-box;margin:0;padding:0}</span>
+<span class="s1">body{font-family:'Nunito',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}</span>
+<span class="s1">h1,h2,h3,.btn,.header-logo,.pet-name{font-family:'Baloo 2',cursive}</span>
+<span class="s1">a{color:var(--primary-hover);text-decoration:none;font-weight:700;cursor:pointer}</span>
+<span class="s1">a:hover{text-decoration:underline wavy var(--pink)}</span>
+<span class="s1">button{font-family:inherit}</span>
+
+<span class="s1">/* HEADER */</span>
+<span class="s1">.header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 28px;background:rgba(255,246,229,.85);backdrop-filter:blur(12px);border-bottom:3px dashed var(--bg-accent)}</span>
+<span class="s1">.header-logo{font-size:24px;font-weight:800;cursor:pointer}</span>
+<span class="s1">.header-logo span{color:var(--primary-hover)}</span>
+<span class="s1">.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}</span>
+<span class="s1">.coins-pill{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(180deg,#FFF7C2,#FFE784);padding:8px 16px;border-radius:999px;font-weight:800;color:#8A6A00;box-shadow:0 4px 0 #E6C94A;animation:pulse 2s ease-in-out infinite}</span>
+<span class="s1">@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}</span>
+<span class="s1">.user-pill{display:inline-flex;align-items:center;gap:8px;background:var(--white);padding:8px 14px 8px 8px;border-radius:999px;font-weight:700;box-shadow:var(--shadow)}</span>
+<span class="s1">.user-avatar{width:30px;height:30px;border-radius:50%;background:var(--pink);display:grid;place-items:center;font-weight:800;color:#fff}</span>
+
+<span class="s1">/* КНОПКИ */</span>
+<span class="s1">.btn{border:none;cursor:pointer;font-family:'Baloo 2',cursive;font-size:18px;font-weight:700;padding:12px 26px;border-radius:999px;color:#fff;background:var(--primary);box-shadow:0 6px 0 var(--primary-hover),var(--shadow);transition:transform .15s,box-shadow .15s;text-decoration:none;display:inline-block}</span>
+<span class="s1">.btn:hover{transform:translateY(-3px);box-shadow:0 9px 0 var(--primary-hover),var(--shadow-strong);text-decoration:none}</span>
+<span class="s1">.btn:active{transform:translateY(2px);box-shadow:0 3px 0 var(--primary-hover)}</span>
+<span class="s1">.btn-primary{background:var(--primary);color:#fff}</span>
+<span class="s1">.btn-soft{background:#fff;color:var(--primary-hover);box-shadow:0 6px 0 var(--bg-accent),var(--shadow)}</span>
+<span class="s1">.btn-soft:hover{box-shadow:0 9px 0 var(--bg-accent),var(--shadow-strong)}</span>
+<span class="s1">.btn-mint{background:var(--mint);color:#2C6E52;box-shadow:0 6px 0 #6ED3A6,var(--shadow)}</span>
+<span class="s1">.btn-mint:hover{box-shadow:0 9px 0 #6ED3A6,var(--shadow-strong)}</span>
+<span class="s1">.btn-block{width:100%}</span>
+<span class="s1">.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}</span>
+<span class="s1">.btn-sm{font-size:15px;padding:8px 16px}</span>
+
+<span class="s1">/* ЭКРАНЫ */</span>
+<span class="s1">.screen{display:none;position:relative;z-index:1;min-height:calc(100vh - 70px)}</span>
+<span class="s1">.screen.active{display:block;animation:fadeIn .35s ease-out}</span>
+<span class="s1">@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}</span>
+<span class="s1">.section-title{text-align:center;font-size:clamp(22px,4vw,32px);font-weight:800;margin-bottom:24px}</span>
+
+<span class="s1">/* ФОН */</span>
+<span class="s1">.bg-decor{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}</span>
+<span class="s1">.bg-decor .cloud{position:absolute;font-size:60px;opacity:.5;animation:float 8s ease-in-out infinite}</span>
+<span class="s1">.bg-decor .c1{top:8%;left:5%} .bg-decor .c2{top:20%;right:8%;animation-delay:2s;font-size:48px} .bg-decor .c3{top:60%;left:12%;animation-delay:4s;font-size:40px}</span>
+<span class="s1">@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}</span>
+
+<span class="s1">/* HERO */</span>
+<span class="s1">.hero{text-align:center;padding:48px 20px 24px}</span>
+<span class="s1">.hero-title{font-size:clamp(28px,5vw,48px);font-weight:800;line-height:1.2;margin-bottom:12px}</span>
+<span class="s1">.wave{display:inline-block;animation:swing 1.6s ease-in-out infinite}</span>
+<span class="s1">@keyframes swing{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}</span>
+<span class="s1">.hero-sub{font-size:18px;color:var(--text-soft)}</span>
+
+<span class="s1">/* КАРТОЧКИ ПИТОМЦЕВ */</span>
+<span class="s1">.pets-section{padding:24px 20px 48px;max-width:1200px;margin:0 auto}</span>
+<span class="s1">.pets-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}</span>
+<span class="s1">.pet-card{background:#fff;border-radius:var(--radius);padding:22px;text-align:center;box-shadow:var(--shadow);border:4px solid var(--bg-accent);transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}</span>
+<span class="s1">.pet-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-strong)}</span>
+<span class="s1">.pet-card::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:var(--pink);opacity:.25}</span>
+<span class="s1">.pet-avatar{width:110px;height:110px;margin:0 auto 12px;border-radius:50%;background:var(--bg-accent);display:grid;place-items:center;font-size:64px;border:5px dashed var(--primary);animation:breathe 3s ease-in-out infinite}</span>
+<span class="s1">@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}</span>
+<span class="s1">.pet-card h3{font-size:22px;margin-bottom:6px}</span>
+<span class="s1">.pet-badge{display:inline-block;background:var(--mint);color:#2C6E52;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:10px}</span>
+<span class="s1">.pet-badge.cartoon{background:#FFD3A8;color:#8A4F00}</span>
+<span class="s1">.pet-sound{position:absolute;top:14px;left:14px;font-size:18px;opacity:.6}</span>
+<span class="s1">.pet-price{display:inline-block;background:#FFF7C2;color:#8A6A00;font-weight:800;font-size:13px;padding:4px 14px;border-radius:999px;margin:6px 0 12px}</span>
+<span class="s1">.pet-price.cartoon{background:linear-gradient(180deg,#FFE3A8,#FFC97A);color:#7A4200}</span>
+
+<span class="s1">/* ФИЧИ */</span>
+<span class="s1">.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;max-width:1200px;margin:0 auto;padding:24px 20px 48px}</span>
+<span class="s1">.feature-card{background:#fff;border-radius:var(--radius);padding:28px 22px;text-align:center;box-shadow:var(--shadow);border:4px solid var(--bg-accent)}</span>
+<span class="s1">.feature-icon{font-size:52px;margin-bottom:12px}</span>
+<span class="s1">.feature-card h3{font-size:22px;margin-bottom:8px}</span>
+<span class="s1">.feature-card p{color:var(--text-soft);margin-bottom:16px;font-size:15px}</span>
+
+<span class="s1">/* FOOTER */</span>
+<span class="s1">.footer{text-align:center;padding:28px 20px;background:var(--bg-accent);border-top:3px dashed var(--primary);color:var(--text-soft);font-weight:600;position:relative;z-index:1}</span>
+<span class="s1">.footer nav{margin-top:10px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap}</span>
+<span class="s1">.footer .disclaimer{font-size:12px;opacity:.65;margin-top:10px;max-width:700px;margin-left:auto;margin-right:auto;line-height:1.5}</span>
+
+<span class="s1">/* МОДАЛКИ */</span>
+<span class="s1">.modal-backdrop{position:fixed;inset:0;background:rgba(74,55,40,.5);display:none;place-items:center;z-index:100;padding:20px;backdrop-filter:blur(4px)}</span>
+<span class="s1">.modal-backdrop.open{display:grid}</span>
+<span class="s1">.modal{background:#fff;border-radius:var(--radius);padding:32px;max-width:480px;width:100%;text-align:center;box-shadow:var(--shadow-strong);border:5px solid var(--bg-accent);animation:pop .3s ease-out;max-height:85vh;overflow-y:auto}</span>
+<span class="s1">@keyframes pop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}</span>
+<span class="s1">.modal h3{font-size:26px;margin-bottom:12px}</span>
+<span class="s1">.modal-pet{font-size:88px;margin:12px 0 20px}</span>
+<span class="s1">.modal-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}</span>
+
+<span class="s1">/* ФОРМЫ */</span>
+<span class="s1">.auth-wrap{display:grid;place-items:center;min-height:calc(100vh - 70px);padding:20px}</span>
+<span class="s1">.auth-card{background:#fff;border-radius:var(--radius);padding:40px 32px;max-width:440px;width:100%;box-shadow:var(--shadow-strong);border:5px solid var(--bg-accent);text-align:center}</span>
+<span class="s1">.auth-emoji{font-size:72px;margin-bottom:8px;animation:breathe 3s ease-in-out infinite}</span>
+<span class="s1">.auth-title{font-size:30px;margin-bottom:6px}</span>
+<span class="s1">.auth-sub{color:var(--text-soft);margin-bottom:24px}</span>
+<span class="s1">.auth-form{text-align:left;display:flex;flex-direction:column;gap:14px}</span>
+<span class="s1">.auth-form label span{display:block;font-size:14px;font-weight:700;color:var(--text-soft);margin-bottom:6px}</span>
+<span class="s1">.input{width:100%;padding:14px 18px;font-size:16px;font-family:'Nunito',sans-serif;font-weight:600;border:3px solid var(--bg-accent);border-radius:var(--radius-sm);background:var(--bg);color:var(--text)}</span>
+<span class="s1">.input:focus{outline:none;border-color:var(--primary);background:#fff}</span>
+<span class="s1">.auth-error{color:#D9534F;font-weight:700;font-size:14px;min-height:18px;text-align:center}</span>
+<span class="s1">.auth-foot{margin-top:20px;color:var(--text-soft);font-weight:600}</span>
+<span class="s1">.auth-links{display:flex;justify-content:space-between;margin-top:12px;font-size:14px}</span>
+
+<span class="s1">/* КОМНАТА */</span>
+<span class="s1">.room-wrap{max-width:1200px;margin:0 auto;padding:24px 20px;display:grid;grid-template-columns:1.5fr 1fr;gap:24px}</span>
+<span class="s1">@media(max-width:900px){.room-wrap{grid-template-columns:1fr}}</span>
+<span class="s1">.room-stage{position:relative;border-radius:var(--radius);border:6px solid var(--bg-accent);box-shadow:var(--shadow-strong);min-height:520px;overflow:hidden;transition:background 1.5s ease;font-family:'Nunito',sans-serif;background:linear-gradient(180deg,var(--room-wall) 0%, var(--room-wall-2) 62%, var(--room-floor) 62%, #1E1814 100%)}</span>
+
+<span class="s1">/* ВРЕМЯ СУТОК */</span>
+<span class="s1">.room-stage.time-morning{--room-wall:#5A4E42;--room-wall-2:#6A5E50;--room-floor:#3A3028;background:linear-gradient(180deg,#B8D8E8 0%, #D9C8A8 62%, #3A3028 62%, #2A2018 100%)}</span>
+<span class="s1">.room-stage.time-day{--room-wall:#6A5E50;--room-wall-2:#7A6E60;--room-floor:#4A4038;background:linear-gradient(180deg,#E8F0F8 0%, #EAD8B8 62%, #4A4038 62%, #3A3028 100%)}</span>
+<span class="s1">.room-stage.time-evening{--room-wall:#5A3E2E;--room-wall-2:#6A4A38;--room-floor:#3A2A20;background:linear-gradient(180deg,#E8A868 0%, #C87850 62%, #3A2A20 62%, #2A1E16 100%)}</span>
+<span class="s1">.room-stage.time-night{--room-wall:#1F1A24;--room-wall-2:#2A242E;--room-floor:#161218;background:linear-gradient(180deg,#0B1A2B 0%, #16324F 62%, #161218 62%, #0A0810 100%)}</span>
+<span class="s1">.room-stage.time-night::after{content:'';position:absolute;top:0;left:0;right:0;height:62%;background-image:radial-gradient(2px 2px at 20% 15%, #fff, transparent),radial-gradient(1.5px 1.5px at 60% 30%, #fff, transparent),radial-gradient(2px 2px at 80% 20%, #fff, transparent),radial-gradient(1px 1px at 35% 45%, #fff, transparent),radial-gradient(1.5px 1.5px at 75% 55%, #fff, transparent);opacity:.5;pointer-events:none}</span>
+<span class="s1">.room-stage.walking .pet-big{animation:walkBob .5s ease-in-out infinite}</span>
+<span class="s1">@keyframes walkBob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-4px) rotate(3deg)}}</span>
+
+<span class="s1">/* ЭМОЦИИ ПИТОМЦА */</span>
+<span class="s1">.pet-big{position:absolute;left:30%;bottom:30%;z-index:5;font-size:130px;cursor:pointer;filter:drop-shadow(0 12px 8px rgba(0,0,0,.6));transition:left 3s cubic-bezier(.4,0,.2,1),bottom 3s cubic-bezier(.4,0,.2,1),transform .25s;will-change:left,bottom}</span>
+<span class="s1">.pet-big.emotion-happy{animation:happyJump .6s ease-in-out infinite}</span>
+<span class="s1">@keyframes happyJump{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}</span>
+<span class="s1">.pet-big.emotion-hungry{animation:hungryShake .4s ease-in-out infinite}</span>
+<span class="s1">@keyframes hungryShake{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}</span>
+<span class="s1">.pet-big.emotion-sad{animation:sadSway 2.5s ease-in-out infinite}</span>
+<span class="s1">@keyframes sadSway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}</span>
+<span class="s1">.pet-big.emotion-sleepy{animation:sleepyBreath 3s ease-in-out infinite}</span>
+<span class="s1">@keyframes sleepyBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.03) translateY(2px)}}</span>
+
+<span class="s1">.pet-name{position:absolute;bottom:4%;left:50%;transform:translateX(-50%);z-index:6;font-size:20px;font-weight:800;background:#fff;padding:6px 20px;border-radius:999px;box-shadow:var(--shadow);border:3px solid var(--bg-accent);font-family:'Baloo 2',cursive;transition:bottom .5s}</span>
+<span class="s1">.pet-bubble{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:7;background:#fff;border-radius:var(--radius-sm);padding:10px 18px;font-weight:700;color:var(--text-soft);box-shadow:var(--shadow);border:3px solid var(--bg-accent);font-size:14px;max-width:70%;text-align:center}</span>
+<span class="s1">.pet-emotion-badge{position:absolute;top:16px;left:16px;z-index:8;background:#fff;border-radius:999px;padding:6px 14px;font-weight:800;font-size:13px;box-shadow:var(--shadow);border:3px solid var(--bg-accent)}</span>
+
+<span class="s1">/* МЕБЕЛЬ */</span>
+<span class="s1">.wall-decor{position:absolute;top:0;left:0;right:0;height:60%;pointer-events:none}</span>
+<span class="s1">.poster{position:absolute;padding:8px 12px;background:#F5EFE6;color:#1F1B17;font-family:'Baloo 2',cursive;font-weight:800;font-size:13px;border-radius:4px;text-align:center;line-height:1.1;box-shadow:0 6px 12px rgba(0,0,0,.35);transform:rotate(-3deg)}</span>
+<span class="s1">.poster.p1{top:22%;left:12%;width:90px} .poster.p2{top:14%;left:34%;width:80px;font-size:11px;background:#FFE9C7;transform:rotate(3deg)}</span>
+<span class="s1">.polaroid{position:absolute;background:#F8F3EB;padding:4px 4px 14px;box-shadow:0 6px 12px rgba(0,0,0,.4);width:42px;height:52px;border-radius:2px}</span>
+<span class="s1">.polaroid::after{content:'';position:absolute;inset:4px 4px 16px;background:#B7A28C;border-radius:1px}</span>
+<span class="s1">.polaroid.pa1{top:44%;left:8%} .polaroid.pa2{top:48%;left:18%;transform:rotate(4deg)} .polaroid.pa3{top:42%;left:28%;transform:rotate(-2deg)}</span>
+<span class="s1">.clock{position:absolute;top:14%;left:6%;background:#111;color:#FF6B6B;padding:6px 12px;border-radius:6px;font-family:'Courier New',monospace;font-weight:800;font-size:13px;box-shadow:0 0 18px rgba(255,107,107,.5);letter-spacing:2px}</span>
+<span class="s1">.window{position:absolute;top:8%;right:6%;width:22%;height:42%;background:linear-gradient(180deg,#0B1A2B,#16324F,#1E4266);border-radius:8px;overflow:hidden;box-shadow:inset 0 0 30px rgba(0,0,0,.7), 0 0 24px rgba(255,182,122,.4);border:3px solid #2A2620;transition:background 1.5s}</span>
+<span class="s1">.room-stage.time-morning .window{background:linear-gradient(180deg,#B8D8F0,#E8F0FF,#FFE8C8)}</span>
+<span class="s1">.room-stage.time-day .window{background:linear-gradient(180deg,#A8D0F0,#D8E8FF,#F0F0FF)}</span>
+<span class="s1">.room-stage.time-evening .window{background:linear-gradient(180deg,#FFA858,#FF7048,#8A3828)}</span>
+<span class="s1">.curtain{position:absolute;top:6%;right:4%;width:26%;height:46%;background:linear-gradient(180deg,#4A3F33,#2F2820);border-radius:10px 10px 4px 4px;box-shadow:inset 0 0 20px rgba(0,0,0,.6);border:2px solid #1F1A15}</span>
+<span class="s1">.curtain::after{content:'';position:absolute;left:-6px;top:-6px;right:-6px;height:8px;background:linear-gradient(90deg,#7A6A55,#A89275,#7A6A55);border-radius:4px}</span>
+<span class="s1">.bed{position:absolute;left:4%;bottom:8%;width:52%;height:38%;background:var(--room-bed);border-radius:12px;box-shadow:0 12px 24px rgba(0,0,0,.55), inset 0 -8px 0 var(--room-bed-dark);transform:rotate(-1deg)}</span>
+<span class="s1">.bed::before{content:'';position:absolute;top:-14%;left:-2%;width:104%;height:22%;background:linear-gradient(180deg,#2A2620,#1A1613);border-radius:10px 10px 0 0;box-shadow:0 4px 0 #0F0C0A}</span>
+<span class="s1">.bed::after{content:'';position:absolute;top:8%;left:6%;right:6%;height:60%;background:repeating-linear-gradient(115deg,#D9C9A8 0 6px,#C9B898 6px 12px);border-radius:8px}</span>
+<span class="s1">.pillow{position:absolute;width:46px;height:30px;background:#F5EEDC;border-radius:12px;box-shadow:inset 0 -4px 0 #D9CEB5, 0 4px 8px rgba(0,0,0,.35)}</span>
+<span class="s1">.pillow.pl1{left:8%;top:14%;transform:rotate(-6deg)} .pillow.pl2{left:22%;top:12%;transform:rotate(4deg)}</span>
+<span class="s1">.toy{position:absolute;left:36%;top:12%;font-size:30px;transform:rotate(-8deg)}</span>
+<span class="s1">.blanket{position:absolute;left:0;bottom:-4%;width:100%;height:70%;background:repeating-linear-gradient(160deg,#C9BBA0 0 8px,#B8A98C 8px 16px);border-radius:12px 20px 8px 8px}</span>
+<span class="s1">.desk{position:absolute;right:4%;bottom:12%;width:40%;height:32%;background:#E8E1D5;border-radius:8px;box-shadow:0 12px 24px rgba(0,0,0,.55), inset 0 -6px 0 #C9BFAF}</span>
+<span class="s1">.monitor{position:absolute;top:-36%;left:14%;width:42%;height:56%;background:#0A0A0A;border-radius:6px;box-shadow:0 0 20px rgba(120,180,255,.6);border:3px solid #1A1A1A}</span>
+<span class="s1">.monitor::after{content:'';position:absolute;inset:6px;border-radius:4px;background:linear-gradient(135deg,#6BB8FF,#3D6EA8,#2A4B7A);opacity:.9}</span>
+<span class="s1">.laptop{position:absolute;top:-20%;right:6%;width:22%;height:44%;background:#1A1A1A;border-radius:4px;box-shadow:0 0 12px rgba(255,180,120,.4)}</span>
+<span class="s1">.laptop::after{content:'';position:absolute;inset:4px;background:linear-gradient(180deg,#3A4A6A,#1A2A4A);border-radius:2px}</span>
+<span class="s1">.lamp{position:absolute;top:-24%;left:6%;font-size:22px;filter:drop-shadow(0 0 10px rgba(255,200,120,.9))}</span>
+<span class="s1">.room-stage.time-night .lamp{filter:drop-shadow(0 0 22px rgba(255,200,120,1))}</span>
+<span class="s1">.chair{position:absolute;right:6%;bottom:2%;width:18%;height:44%;background:linear-gradient(180deg,#F2EFEA,#D9D2C6);border-radius:14px;box-shadow:0 8px 14px rgba(0,0,0,.55), inset 0 -8px 0 #B8AFA0;transform:rotate(-2deg)}</span>
+<span class="s1">.chair::after{content:'';position:absolute;bottom:-22px;left:20%;right:20%;height:22px;background:radial-gradient(circle at 50% 0, #2A2620 0 40%, transparent 42%)}</span>
+<span class="s1">.rug{position:absolute;left:38%;bottom:-14%;width:44%;aspect-ratio:1/1;background:#111;border-radius:50%;box-shadow:0 8px 20px rgba(0,0,0,.7), inset 0 0 0 2px #222;display:grid;place-items:center;pointer-events:none}</span>
+<span class="s1">.rug::before{content:'';width:44%;height:44%;border-radius:50%;background:#F5F5F5;box-shadow:inset 0 0 0 3px #111}</span>
+<span class="s1">.rug::after{content:'8';position:absolute;color:#111;font-family:'Baloo 2',cursive;font-weight:800;font-size:22px}</span>
+
+<span class="s1">/* ПАНЕЛЬ КОМНАТЫ */</span>
+<span class="s1">.room-panel{display:flex;flex-direction:column;gap:16px}</span>
+<span class="s1">.stat{background:#fff;border-radius:var(--radius-sm);padding:16px 20px;box-shadow:var(--shadow);border:3px solid var(--bg-accent)}</span>
+<span class="s1">.stat-head{display:flex;justify-content:space-between;font-weight:800;margin-bottom:8px}</span>
+<span class="s1">.bar{height:16px;background:var(--bg-accent);border-radius:999px;overflow:hidden}</span>
+<span class="s1">.bar-fill{height:100%;border-radius:999px;transition:width .5s ease}</span>
+<span class="s1">.bar-hunger{background:linear-gradient(90deg,#FFB88C,#FF7B3D)}</span>
+<span class="s1">.bar-mood{background:linear-gradient(90deg,#A8E6CF,#6ED3A6)}</span>
+<span class="s1">.room-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}</span>
+<span class="s1">.room-actions .btn-full{grid-column:span 2}</span>
+<span class="s1">.inventory{display:flex;gap:10px;flex-wrap:wrap}</span>
+<span class="s1">.inv-item{background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;box-shadow:var(--shadow);border:3px solid var(--bg-accent);font-size:14px}</span>
+
+<span class="s1">/* ОТЕЛЬ */</span>
+<span class="s1">.hotel-wrap{max-width:1200px;margin:0 auto;padding:32px 20px}</span>
+<span class="s1">.hotel-sub{text-align:center;color:var(--text-soft);margin-bottom:24px;font-weight:600}</span>
+<span class="s1">.hotel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}</span>
+<span class="s1">.hotel-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:4px solid var(--bg-accent);transition:transform .25s,box-shadow .25s;cursor:pointer;position:relative}</span>
+<span class="s1">.hotel-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-strong)}</span>
+<span class="s1">.hotel-card.active-room{border-color:var(--primary);box-shadow:0 0 0 4px rgba(255,159,104,.25),var(--shadow)}</span>
+<span class="s1">.hotel-room-preview{height:150px;display:grid;place-items:center;font-size:70px;background:linear-gradient(180deg,var(--room-wall) 0%, var(--room-wall-2) 62%, var(--room-floor) 62%, #1E1814 100%);position:relative}</span>
+<span class="s1">.hotel-room-preview &gt; span{position:relative;z-index:1;filter:drop-shadow(0 6px 4px rgba(0,0,0,.6))}</span>
+<span class="s1">.hotel-body{padding:18px;text-align:center}</span>
+<span class="s1">.hotel-body h3{font-size:22px;margin-bottom:6px}</span>
+<span class="s1">.hotel-body .species{color:var(--text-soft);font-size:14px;font-weight:700;margin-bottom:8px}</span>
+<span class="s1">.hotel-stats{display:flex;justify-content:center;gap:14px;font-weight:700;font-size:14px;color:var(--text-soft)}</span>
+<span class="s1">.hotel-emotion{font-size:13px;font-weight:800;color:var(--primary-hover);margin-bottom:8px}</span>
+<span class="s1">.hotel-badge-active{position:absolute;top:12px;right:12px;background:var(--mint);color:#2C6E52;font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;text-transform:uppercase;box-shadow:0 3px 0 #6ED3A6;z-index:2}</span>
+<span class="s1">.hotel-empty{border:4px dashed var(--primary);background:rgba(255,255,255,.6);display:grid;place-items:center;text-align:center;padding:30px 20px;min-height:230px;border-radius:var(--radius)}</span>
+<span class="s1">.hotel-empty-icon{font-size:60px;margin-bottom:10px;opacity:.7}</span>
+<span class="s1">.hotel-empty h3{font-size:20px;margin-bottom:6px}</span>
+<span class="s1">.hotel-empty p{color:var(--text-soft);font-size:14px;font-weight:600;margin-bottom:16px}</span>
+
+<span class="s1">/* МАГАЗИН */</span>
+<span class="s1">.shop-wrap{max-width:1200px;margin:0 auto;padding:32px 20px;text-align:center}</span>
+<span class="s1">.shop-sub{color:var(--text-soft);margin-bottom:24px}</span>
+<span class="s1">.shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}</span>
+<span class="s1">.shop-item{background:#fff;border-radius:var(--radius);padding:22px;text-align:center;box-shadow:var(--shadow);border:4px solid var(--bg-accent);transition:transform .2s}</span>
+<span class="s1">.shop-item:hover{transform:translateY(-6px)}</span>
+<span class="s1">.shop-item-icon{font-size:56px;margin-bottom:10px}</span>
+<span class="s1">.shop-item h3{font-size:19px;margin-bottom:6px}</span>
+<span class="s1">.shop-item .desc{color:var(--text-soft);font-size:13px;margin-bottom:10px;min-height:36px}</span>
+<span class="s1">.shop-item .price{color:#8A6A00;font-weight:800;background:#FFF7C2;padding:4px 14px;border-radius:999px;display:inline-block;margin-bottom:12px}</span>
+<span class="s1">.shop-hint{margin-top:20px;color:var(--text-soft);font-weight:700;min-height:24px}</span>
+
+<span class="s1">/* ХАБ ИГР */</span>
+<span class="s1">.games-wrap{max-width:1100px;margin:0 auto;padding:32px 20px;text-align:center}</span>
+<span class="s1">.games-sub{color:var(--text-soft);margin-bottom:28px}</span>
+<span class="s1">.games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}</span>
+<span class="s1">.game-card{background:#fff;border-radius:var(--radius);padding:28px 22px;box-shadow:var(--shadow);border:4px solid var(--bg-accent);text-align:center;transition:transform .25s,box-shadow .25s}</span>
+<span class="s1">.game-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-strong)}</span>
+<span class="s1">.game-card .game-emoji{font-size:70px;margin-bottom:12px;display:block}</span>
+<span class="s1">.game-card h3{font-size:24px;margin-bottom:8px}</span>
+<span class="s1">.game-card p{color:var(--text-soft);margin-bottom:14px;font-size:14px}</span>
+<span class="s1">.game-card .reward{display:inline-block;background:#FFF7C2;color:#8A6A00;font-weight:800;font-size:13px;padding:4px 12px;border-radius:999px;margin-bottom:14px}</span>
+
+<span class="s1">/* CANVAS */</span>
+<span class="s1">.play-wrap{max-width:900px;margin:0 auto;padding:24px 20px;text-align:center}</span>
+<span class="s1">.play-hud{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:16px;font-weight:800;font-size:16px}</span>
+<span class="s1">.play-hud &gt; div{background:#fff;padding:8px 16px;border-radius:999px;box-shadow:var(--shadow);border:3px solid var(--bg-accent)}</span>
+<span class="s1">.play-canvas{width:100%;max-width:800px;height:auto;border-radius:var(--radius);border:6px solid var(--bg-accent);box-shadow:var(--shadow-strong);background:#111;touch-action:none}</span>
+<span class="s1">.play-actions{margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}</span>
+<span class="s1">.play-help{margin-top:12px;color:var(--text-soft);font-weight:600;font-size:14px}</span>
+
+<span class="s1">/* ДОСТИЖЕНИЯ */</span>
+<span class="s1">.toast-ach{position:fixed;top:90px;right:24px;z-index:200;background:linear-gradient(135deg,#FFE3A8,#FFC97A);border:4px solid #FF9F68;border-radius:var(--radius-sm);padding:14px 20px;box-shadow:var(--shadow-strong);display:flex;align-items:center;gap:12px;font-weight:800;animation:toastIn .5s ease-out;max-width:340px}</span>
+<span class="s1">@keyframes toastIn{from{transform:translateX(420px);opacity:0}to{transform:translateX(0);opacity:1}}</span>
+<span class="s1">.toast-ach.out{animation:toastOut .5s ease-in forwards}</span>
+<span class="s1">@keyframes toastOut{to{transform:translateX(420px);opacity:0}}</span>
+<span class="s1">.toast-ach .toast-icon{font-size:36px}</span>
+<span class="s1">.toast-ach .toast-title{font-family:'Baloo 2',cursive;font-size:14px;color:#7A4200;text-transform:uppercase;letter-spacing:1px}</span>
+<span class="s1">.toast-ach .toast-name{font-family:'Baloo 2',cursive;font-size:18px;color:#4A2A00}</span>
+<span class="s1">.ach-wrap{max-width:1100px;margin:0 auto;padding:32px 20px}</span>
+<span class="s1">.ach-sub{text-align:center;color:var(--text-soft);margin-bottom:24px;font-weight:600}</span>
+<span class="s1">.ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}</span>
+<span class="s1">.ach-card{background:#fff;border-radius:var(--radius);padding:20px;text-align:center;box-shadow:var(--shadow);border:4px solid var(--bg-accent);transition:transform .2s}</span>
+<span class="s1">.ach-card:hover{transform:translateY(-4px)}</span>
+<span class="s1">.ach-card.locked{filter:grayscale(.9);opacity:.55}</span>
+<span class="s1">.ach-card.unlocked{border-color:#FFC97A;background:linear-gradient(180deg,#FFFBF0,#FFEEC8)}</span>
+<span class="s1">.ach-icon{font-size:56px;margin-bottom:8px}</span>
+<span class="s1">.ach-card h3{font-size:18px;margin-bottom:6px}</span>
+<span class="s1">.ach-card p{font-size:13px;color:var(--text-soft);font-weight:600}</span>
+<span class="s1">.ach-status{margin-top:10px;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:1px}</span>
+<span class="s1">.ach-card.unlocked .ach-status{color:#8A6A00}</span>
+<span class="s1">.ach-card.locked .ach-status{color:#888}</span>
+
+<span class="s1">/* ДНЕВНИК */</span>
+<span class="s1">.diary-entry{background:#FFFBF0;border-left:5px solid var(--primary);border-radius:8px;padding:12px 16px;margin-bottom:12px;text-align:left}</span>
+<span class="s1">.diary-date{font-size:12px;color:var(--text-soft);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}</span>
+<span class="s1">.diary-text{font-size:15px;font-weight:600;color:var(--text);font-style:italic}</span>
+<span class="s1">.diary-empty{color:var(--text-soft);font-style:italic;padding:20px;text-align:center}</span>
+
+<span class="s1">.badge-num{position:absolute;top:-6px;right:-6px;background:#FF4D4D;color:#fff;font-size:11px;font-weight:800;padding:2px 7px;border-radius:999px;border:2px solid #fff}</span>
+
+<span class="s1">@media(max-width:600px){</span>
+  <span class="s1">.header{padding:12px 16px} .header-logo{font-size:18px}</span>
+  <span class="s1">.coins-pill,.user-pill{font-size:13px;padding:6px 12px}</span>
+  <span class="s1">.room-actions{grid-template-columns:1fr} .room-actions .btn-full{grid-column:span 1}</span>
+  <span class="s1">.pet-big{font-size:90px}</span>
+<span class="s1">}</span>
+<span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+<span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;bg-decor&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;cloud c1&quot;</span><span class="s0">&gt;</span><span class="s1">☁️</span><span class="s0">&lt;/span&gt;&lt;span </span><span class="s2">class</span><span class="s3">=&quot;cloud c2&quot;</span><span class="s0">&gt;</span><span class="s1">☁️</span><span class="s0">&lt;/span&gt;&lt;span </span><span class="s2">class</span><span class="s3">=&quot;cloud c3&quot;</span><span class="s0">&gt;</span><span class="s1">☁️</span><span class="s0">&lt;/span&gt;</span>
+<span class="s0">&lt;/div&gt;</span>
+
+<span class="s0">&lt;header </span><span class="s2">class</span><span class="s3">=&quot;header&quot; </span><span class="s2">id</span><span class="s3">=&quot;header&quot;</span><span class="s0">&gt;&lt;/header&gt;</span>
+
+<span class="s4">&lt;!-- ГЛАВНАЯ --&gt;</span>
+<span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;screen active&quot; </span><span class="s2">id</span><span class="s3">=&quot;screen-home&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;hero&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;hero-title&quot;</span><span class="s0">&gt;&lt;span </span><span class="s2">class</span><span class="s3">=&quot;wave&quot;</span><span class="s0">&gt;</span><span class="s1">✨</span><span class="s0">&lt;/span&gt; </span><span class="s1">Добро пожаловать в мир Тамагочи! </span><span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;wave&quot;</span><span class="s0">&gt;</span><span class="s1">✨</span><span class="s0">&lt;/span&gt;&lt;/h1&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;hero-sub&quot; </span><span class="s2">id</span><span class="s3">=&quot;heroSub&quot;</span><span class="s0">&gt;</span><span class="s1">Выбери друга — и начни о нём заботиться!</span><span class="s0">&lt;/p&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;pets-section&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h2 </span><span class="s2">class</span><span class="s3">=&quot;section-title&quot;</span><span class="s0">&gt;</span><span class="s1">🐾 Выбери своего питомца</span><span class="s0">&lt;/h2&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;pets-grid&quot; </span><span class="s2">id</span><span class="s3">=&quot;petsGrid&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;features&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature-card&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature-icon&quot;</span><span class="s0">&gt;</span><span class="s1">🏨</span><span class="s0">&lt;/div&gt;&lt;h3&gt;</span><span class="s1">Мой отель</span><span class="s0">&lt;/h3&gt;</span>
+      <span class="s0">&lt;p&gt;</span><span class="s1">Все комнаты с питомцами в одном месте</span><span class="s0">&lt;/p&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-soft&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;App.go('rooms')&quot;</span><span class="s0">&gt;</span><span class="s1">Открыть отель</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature-card&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature-icon&quot;</span><span class="s0">&gt;</span><span class="s1">🎮</span><span class="s0">&lt;/div&gt;&lt;h3&gt;</span><span class="s1">Мини-игры</span><span class="s0">&lt;/h3&gt;</span>
+      <span class="s0">&lt;p&gt;</span><span class="s1">Марио, Пак-пак, Гонки</span><span class="s0">&lt;/p&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-soft&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;App.go('minigames')&quot;</span><span class="s0">&gt;</span><span class="s1">Играть</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature-card&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature-icon&quot;</span><span class="s0">&gt;</span><span class="s1">🏆</span><span class="s0">&lt;/div&gt;&lt;h3&gt;</span><span class="s1">Достижения</span><span class="s0">&lt;/h3&gt;</span>
+      <span class="s0">&lt;p&gt;</span><span class="s1">Собери все награды!</span><span class="s0">&lt;/p&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-soft&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;App.go('achievements')&quot;</span><span class="s0">&gt;</span><span class="s1">Смотреть</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature-card&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature-icon&quot;</span><span class="s0">&gt;</span><span class="s1">🍖</span><span class="s0">&lt;/div&gt;&lt;h3&gt;</span><span class="s1">Магазин</span><span class="s0">&lt;/h3&gt;</span>
+      <span class="s0">&lt;p&gt;</span><span class="s1">Еда для всех питомцев</span><span class="s0">&lt;/p&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-soft&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;App.go('shop')&quot;</span><span class="s0">&gt;</span><span class="s1">В магазин</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/section&gt;</span>
+
+<span class="s4">&lt;!-- РЕГИСТРАЦИЯ --&gt;</span>
+<span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;screen&quot; </span><span class="s2">id</span><span class="s3">=&quot;screen-register&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-wrap&quot;</span><span class="s0">&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-card&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-emoji&quot;</span><span class="s0">&gt;</span><span class="s1">🐣</span><span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;auth-title&quot;</span><span class="s0">&gt;</span><span class="s1">Создать аккаунт</span><span class="s0">&lt;/h1&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;auth-sub&quot;</span><span class="s0">&gt;</span><span class="s1">Придумай имя — и заведи питомца!</span><span class="s0">&lt;/p&gt;</span>
+    <span class="s0">&lt;form </span><span class="s2">id</span><span class="s3">=&quot;registerForm&quot; </span><span class="s2">class</span><span class="s3">=&quot;auth-form&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;label&gt;&lt;span&gt;</span><span class="s1">📧 Почта</span><span class="s0">&lt;/span&gt;&lt;input </span><span class="s2">class</span><span class="s3">=&quot;input&quot; </span><span class="s2">type</span><span class="s3">=&quot;email&quot; </span><span class="s2">id</span><span class="s3">=&quot;regEmail&quot; </span><span class="s2">required </span><span class="s0">/&gt;&lt;/label&gt;</span>
+      <span class="s0">&lt;label&gt;&lt;span&gt;</span><span class="s1">👤 Логин</span><span class="s0">&lt;/span&gt;&lt;input </span><span class="s2">class</span><span class="s3">=&quot;input&quot; </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">id</span><span class="s3">=&quot;regLogin&quot; </span><span class="s2">required minlength</span><span class="s3">=&quot;2&quot; </span><span class="s0">/&gt;&lt;/label&gt;</span>
+      <span class="s0">&lt;label&gt;&lt;span&gt;</span><span class="s1">🔒 Пароль</span><span class="s0">&lt;/span&gt;&lt;input </span><span class="s2">class</span><span class="s3">=&quot;input&quot; </span><span class="s2">type</span><span class="s3">=&quot;password&quot; </span><span class="s2">id</span><span class="s3">=&quot;regPassword&quot; </span><span class="s2">required minlength</span><span class="s3">=&quot;4&quot; </span><span class="s0">/&gt;&lt;/label&gt;</span>
+      <span class="s0">&lt;label&gt;&lt;span&gt;</span><span class="s1">🔒 Повтори пароль</span><span class="s0">&lt;/span&gt;&lt;input </span><span class="s2">class</span><span class="s3">=&quot;input&quot; </span><span class="s2">type</span><span class="s3">=&quot;password&quot; </span><span class="s2">id</span><span class="s3">=&quot;regPassword2&quot; </span><span class="s2">required minlength</span><span class="s3">=&quot;4&quot; </span><span class="s0">/&gt;&lt;/label&gt;</span>
+      <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;auth-error&quot; </span><span class="s2">id</span><span class="s3">=&quot;regError&quot;</span><span class="s0">&gt;&lt;/p&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary btn-block&quot; </span><span class="s2">type</span><span class="s3">=&quot;submit&quot;</span><span class="s0">&gt;</span><span class="s1">Зарегистрироваться 🎉</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/form&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;auth-foot&quot;</span><span class="s0">&gt;</span><span class="s1">Есть аккаунт? </span><span class="s0">&lt;a </span><span class="s2">onclick</span><span class="s3">=&quot;App.go('login')&quot;</span><span class="s0">&gt;</span><span class="s1">Войти</span><span class="s0">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="s0">&lt;/div&gt;&lt;/div&gt;</span>
+<span class="s0">&lt;/section&gt;</span>
+
+<span class="s4">&lt;!-- ВХОД --&gt;</span>
+<span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;screen&quot; </span><span class="s2">id</span><span class="s3">=&quot;screen-login&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-wrap&quot;</span><span class="s0">&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-card&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-emoji&quot;</span><span class="s0">&gt;</span><span class="s1">🐾</span><span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;auth-title&quot;</span><span class="s0">&gt;</span><span class="s1">С возвращением!</span><span class="s0">&lt;/h1&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;auth-sub&quot;</span><span class="s0">&gt;</span><span class="s1">Твои питомцы скучают</span><span class="s0">&lt;/p&gt;</span>
+    <span class="s0">&lt;form </span><span class="s2">id</span><span class="s3">=&quot;loginForm&quot; </span><span class="s2">class</span><span class="s3">=&quot;auth-form&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;label&gt;&lt;span&gt;</span><span class="s1">👤 Логин</span><span class="s0">&lt;/span&gt;&lt;input </span><span class="s2">class</span><span class="s3">=&quot;input&quot; </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">id</span><span class="s3">=&quot;logLogin&quot; </span><span class="s2">required </span><span class="s0">/&gt;&lt;/label&gt;</span>
+      <span class="s0">&lt;label&gt;&lt;span&gt;</span><span class="s1">🔒 Пароль</span><span class="s0">&lt;/span&gt;&lt;input </span><span class="s2">class</span><span class="s3">=&quot;input&quot; </span><span class="s2">type</span><span class="s3">=&quot;password&quot; </span><span class="s2">id</span><span class="s3">=&quot;logPassword&quot; </span><span class="s2">required </span><span class="s0">/&gt;&lt;/label&gt;</span>
+      <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;auth-error&quot; </span><span class="s2">id</span><span class="s3">=&quot;logError&quot;</span><span class="s0">&gt;&lt;/p&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary btn-block&quot; </span><span class="s2">type</span><span class="s3">=&quot;submit&quot;</span><span class="s0">&gt;</span><span class="s1">Войти 🐾</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/form&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-links&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;a </span><span class="s2">onclick</span><span class="s3">=&quot;App.go('forgot')&quot;</span><span class="s0">&gt;</span><span class="s1">Забыли пароль?</span><span class="s0">&lt;/a&gt;</span>
+      <span class="s0">&lt;a </span><span class="s2">onclick</span><span class="s3">=&quot;App.go('register')&quot;</span><span class="s0">&gt;</span><span class="s1">Создать аккаунт</span><span class="s0">&lt;/a&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+  <span class="s0">&lt;/div&gt;&lt;/div&gt;</span>
+<span class="s0">&lt;/section&gt;</span>
+
+<span class="s4">&lt;!-- ЗАБЫЛИ ПАРОЛЬ --&gt;</span>
+<span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;screen&quot; </span><span class="s2">id</span><span class="s3">=&quot;screen-forgot&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-wrap&quot;</span><span class="s0">&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-card&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-emoji&quot;</span><span class="s0">&gt;</span><span class="s1">🔑</span><span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;auth-title&quot;</span><span class="s0">&gt;</span><span class="s1">Восстановление</span><span class="s0">&lt;/h1&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;auth-sub&quot;</span><span class="s0">&gt;</span><span class="s1">Введи почту — придёт код</span><span class="s0">&lt;/p&gt;</span>
+    <span class="s0">&lt;form </span><span class="s2">id</span><span class="s3">=&quot;forgotForm&quot; </span><span class="s2">class</span><span class="s3">=&quot;auth-form&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;label&gt;&lt;span&gt;</span><span class="s1">📧 Почта</span><span class="s0">&lt;/span&gt;&lt;input </span><span class="s2">class</span><span class="s3">=&quot;input&quot; </span><span class="s2">type</span><span class="s3">=&quot;email&quot; </span><span class="s2">id</span><span class="s3">=&quot;forgotEmail&quot; </span><span class="s2">required </span><span class="s0">/&gt;&lt;/label&gt;</span>
+      <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;auth-error&quot; </span><span class="s2">id</span><span class="s3">=&quot;forgotError&quot;</span><span class="s0">&gt;&lt;/p&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary btn-block&quot; </span><span class="s2">type</span><span class="s3">=&quot;submit&quot;</span><span class="s0">&gt;</span><span class="s1">Получить код 📨</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/form&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;auth-foot&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">onclick</span><span class="s3">=&quot;App.go('login')&quot;</span><span class="s0">&gt;</span><span class="s1">← Назад</span><span class="s0">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="s0">&lt;/div&gt;&lt;/div&gt;</span>
+<span class="s0">&lt;/section&gt;</span>
+
+<span class="s4">&lt;!-- СБРОС --&gt;</span>
+<span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;screen&quot; </span><span class="s2">id</span><span class="s3">=&quot;screen-reset&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-wrap&quot;</span><span class="s0">&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-card&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-emoji&quot;</span><span class="s0">&gt;</span><span class="s1">🔐</span><span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;auth-title&quot;</span><span class="s0">&gt;</span><span class="s1">Новый пароль</span><span class="s0">&lt;/h1&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;auth-sub&quot; </span><span class="s2">id</span><span class="s3">=&quot;resetHint&quot;</span><span class="s0">&gt;</span><span class="s1">Введи код и новый пароль</span><span class="s0">&lt;/p&gt;</span>
+    <span class="s0">&lt;form </span><span class="s2">id</span><span class="s3">=&quot;resetForm&quot; </span><span class="s2">class</span><span class="s3">=&quot;auth-form&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;label&gt;&lt;span&gt;</span><span class="s1">🔢 Код</span><span class="s0">&lt;/span&gt;&lt;input </span><span class="s2">class</span><span class="s3">=&quot;input&quot; </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">id</span><span class="s3">=&quot;resetCode&quot; </span><span class="s2">required </span><span class="s0">/&gt;&lt;/label&gt;</span>
+      <span class="s0">&lt;label&gt;&lt;span&gt;</span><span class="s1">🔒 Новый пароль</span><span class="s0">&lt;/span&gt;&lt;input </span><span class="s2">class</span><span class="s3">=&quot;input&quot; </span><span class="s2">type</span><span class="s3">=&quot;password&quot; </span><span class="s2">id</span><span class="s3">=&quot;resetPassword&quot; </span><span class="s2">required minlength</span><span class="s3">=&quot;4&quot; </span><span class="s0">/&gt;&lt;/label&gt;</span>
+      <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;auth-error&quot; </span><span class="s2">id</span><span class="s3">=&quot;resetError&quot;</span><span class="s0">&gt;&lt;/p&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary btn-block&quot; </span><span class="s2">type</span><span class="s3">=&quot;submit&quot;</span><span class="s0">&gt;</span><span class="s1">Сменить ✅</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/form&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;auth-foot&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">onclick</span><span class="s3">=&quot;App.go('login')&quot;</span><span class="s0">&gt;</span><span class="s1">← Назад</span><span class="s0">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="s0">&lt;/div&gt;&lt;/div&gt;</span>
+<span class="s0">&lt;/section&gt;</span>
+
+<span class="s4">&lt;!-- ОТЕЛЬ --&gt;</span>
+<span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;screen&quot; </span><span class="s2">id</span><span class="s3">=&quot;screen-rooms&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;hotel-wrap&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;section-title&quot;</span><span class="s0">&gt;</span><span class="s1">🏨 Мой отель питомцев</span><span class="s0">&lt;/h1&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;hotel-sub&quot; </span><span class="s2">id</span><span class="s3">=&quot;hotelSub&quot;</span><span class="s0">&gt;&lt;/p&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;hotel-grid&quot; </span><span class="s2">id</span><span class="s3">=&quot;hotelGrid&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/section&gt;</span>
+
+<span class="s4">&lt;!-- КОМНАТА --&gt;</span>
+<span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;screen&quot; </span><span class="s2">id</span><span class="s3">=&quot;screen-room&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;room-wrap&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;room-stage&quot; </span><span class="s2">id</span><span class="s3">=&quot;roomStage&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;wall-decor&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;clock&quot; </span><span class="s2">id</span><span class="s3">=&quot;clockEl&quot;</span><span class="s0">&gt;</span><span class="s1">10:32</span><span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;poster p1&quot;</span><span class="s0">&gt;</span><span class="s1">GOOD</span><span class="s0">&lt;br&gt;</span><span class="s1">VIBES</span><span class="s0">&lt;br&gt;</span><span class="s1">ONLY</span><span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;poster p2&quot;</span><span class="s0">&gt;</span><span class="s1">FOCUS</span><span class="s0">&lt;br&gt;</span><span class="s1">PLAN</span><span class="s0">&lt;br&gt;</span><span class="s1">EXECUTE</span><span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;polaroid pa1&quot;</span><span class="s0">&gt;&lt;/div&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;polaroid pa2&quot;</span><span class="s0">&gt;&lt;/div&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;polaroid pa3&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+      <span class="s0">&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;window&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;curtain&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;bed&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;pillow pl1&quot;</span><span class="s0">&gt;&lt;/div&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;pillow pl2&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;toy&quot;</span><span class="s0">&gt;</span><span class="s1">🧸</span><span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;blanket&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+      <span class="s0">&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;desk&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;monitor&quot;</span><span class="s0">&gt;&lt;/div&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;laptop&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;lamp&quot;</span><span class="s0">&gt;</span><span class="s1">💡</span><span class="s0">&lt;/div&gt;</span>
+      <span class="s0">&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chair&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;rug&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;pet-bubble&quot; </span><span class="s2">id</span><span class="s3">=&quot;petBubble&quot;</span><span class="s0">&gt;</span><span class="s1">Привет!</span><span class="s0">&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;pet-emotion-badge&quot; </span><span class="s2">id</span><span class="s3">=&quot;emotionBadge&quot;</span><span class="s0">&gt;</span><span class="s1">🙂 Обычный</span><span class="s0">&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;pet-big&quot; </span><span class="s2">id</span><span class="s3">=&quot;petBig&quot;</span><span class="s0">&gt;</span><span class="s1">🐱</span><span class="s0">&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;pet-name&quot; </span><span class="s2">id</span><span class="s3">=&quot;petName&quot;</span><span class="s0">&gt;</span><span class="s1">Мурзик</span><span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;room-panel&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;stat&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;stat-head&quot;</span><span class="s0">&gt;&lt;span&gt;</span><span class="s1">🍖 Сытость</span><span class="s0">&lt;/span&gt;&lt;span </span><span class="s2">id</span><span class="s3">=&quot;hungerVal&quot;</span><span class="s0">&gt;</span><span class="s1">70%</span><span class="s0">&lt;/span&gt;&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;bar&quot;</span><span class="s0">&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;bar-fill bar-hunger&quot; </span><span class="s2">id</span><span class="s3">=&quot;hungerBar&quot;</span><span class="s0">&gt;&lt;/div&gt;&lt;/div&gt;</span>
+      <span class="s0">&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;stat&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;stat-head&quot;</span><span class="s0">&gt;&lt;span&gt;</span><span class="s1">😊 Настроение</span><span class="s0">&lt;/span&gt;&lt;span </span><span class="s2">id</span><span class="s3">=&quot;moodVal&quot;</span><span class="s0">&gt;</span><span class="s1">90%</span><span class="s0">&lt;/span&gt;&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;bar&quot;</span><span class="s0">&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;bar-fill bar-mood&quot; </span><span class="s2">id</span><span class="s3">=&quot;moodBar&quot;</span><span class="s0">&gt;&lt;/div&gt;&lt;/div&gt;</span>
+      <span class="s0">&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;room-actions&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary btn-full&quot; </span><span class="s2">id</span><span class="s3">=&quot;feedBtn&quot;</span><span class="s0">&gt;</span><span class="s1">🍖 Покормить</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-soft&quot; </span><span class="s2">id</span><span class="s3">=&quot;playBtn&quot;</span><span class="s0">&gt;</span><span class="s1">🎾 Поиграть</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-soft&quot; </span><span class="s2">id</span><span class="s3">=&quot;petBtn&quot;</span><span class="s0">&gt;</span><span class="s1">💖 Погладить</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-mint&quot; </span><span class="s2">id</span><span class="s3">=&quot;diaryBtn&quot;</span><span class="s0">&gt;</span><span class="s1">📔 Дневник</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-soft&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;App.go('rooms')&quot;</span><span class="s0">&gt;</span><span class="s1">🏨 Отель</span><span class="s0">&lt;/button&gt;</span>
+      <span class="s0">&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;inventory&quot; </span><span class="s2">id</span><span class="s3">=&quot;inventory&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/section&gt;</span>
+
+<span class="s4">&lt;!-- МАГАЗИН --&gt;</span>
+<span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;screen&quot; </span><span class="s2">id</span><span class="s3">=&quot;screen-shop&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;shop-wrap&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;section-title&quot;</span><span class="s0">&gt;</span><span class="s1">🍖 Магазин корма</span><span class="s0">&lt;/h1&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;shop-sub&quot;</span><span class="s0">&gt;</span><span class="s1">Каждый питомец любит что-то своё</span><span class="s0">&lt;/p&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;shop-grid&quot; </span><span class="s2">id</span><span class="s3">=&quot;shopGrid&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;shop-hint&quot; </span><span class="s2">id</span><span class="s3">=&quot;shopHint&quot;</span><span class="s0">&gt;&lt;/p&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/section&gt;</span>
+
+<span class="s4">&lt;!-- ХАБ ИГР --&gt;</span>
+<span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;screen&quot; </span><span class="s2">id</span><span class="s3">=&quot;screen-minigames&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;games-wrap&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;section-title&quot;</span><span class="s0">&gt;</span><span class="s1">🎮 Мини-игры</span><span class="s0">&lt;/h1&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;games-sub&quot;</span><span class="s0">&gt;</span><span class="s1">Играй и зарабатывай монеты</span><span class="s0">&lt;/p&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;games-grid&quot; </span><span class="s2">id</span><span class="s3">=&quot;gamesGrid&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/section&gt;</span>
+
+<span class="s4">&lt;!-- ИГРА --&gt;</span>
+<span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;screen&quot; </span><span class="s2">id</span><span class="s3">=&quot;screen-play&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;play-wrap&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;section-title&quot; </span><span class="s2">id</span><span class="s3">=&quot;playTitle&quot;</span><span class="s0">&gt;</span><span class="s1">🎮 Игра</span><span class="s0">&lt;/h1&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;play-hud&quot; </span><span class="s2">id</span><span class="s3">=&quot;playHud&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;canvas </span><span class="s2">class</span><span class="s3">=&quot;play-canvas&quot; </span><span class="s2">id</span><span class="s3">=&quot;playCanvas&quot; </span><span class="s2">width</span><span class="s3">=&quot;800&quot; </span><span class="s2">height</span><span class="s3">=&quot;500&quot;</span><span class="s0">&gt;&lt;/canvas&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;play-actions&quot; </span><span class="s2">id</span><span class="s3">=&quot;playActions&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;play-help&quot; </span><span class="s2">id</span><span class="s3">=&quot;playHelp&quot;</span><span class="s0">&gt;&lt;/p&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/section&gt;</span>
+
+<span class="s4">&lt;!-- ДОСТИЖЕНИЯ --&gt;</span>
+<span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;screen&quot; </span><span class="s2">id</span><span class="s3">=&quot;screen-achievements&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;ach-wrap&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;section-title&quot;</span><span class="s0">&gt;</span><span class="s1">🏆 Достижения</span><span class="s0">&lt;/h1&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;ach-sub&quot; </span><span class="s2">id</span><span class="s3">=&quot;achSub&quot;</span><span class="s0">&gt;&lt;/p&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;ach-grid&quot; </span><span class="s2">id</span><span class="s3">=&quot;achGrid&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/section&gt;</span>
+
+<span class="s4">&lt;!-- МОДАЛКИ --&gt;</span>
+<span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal-backdrop&quot; </span><span class="s2">id</span><span class="s3">=&quot;chooseModal&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h3 </span><span class="s2">id</span><span class="s3">=&quot;modalTitle&quot;</span><span class="s0">&gt;</span><span class="s1">Выбрать?</span><span class="s0">&lt;/h3&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;modal-pet&quot; </span><span class="s2">id</span><span class="s3">=&quot;modalPetImg&quot;</span><span class="s0">&gt;</span><span class="s1">🐱</span><span class="s0">&lt;/p&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal-actions&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-soft&quot; </span><span class="s2">id</span><span class="s3">=&quot;modalCancel&quot;</span><span class="s0">&gt;</span><span class="s1">Отмена</span><span class="s0">&lt;/button&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary&quot; </span><span class="s2">id</span><span class="s3">=&quot;modalConfirm&quot;</span><span class="s0">&gt;</span><span class="s1">Да!</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/div&gt;</span>
+
+<span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal-backdrop&quot; </span><span class="s2">id</span><span class="s3">=&quot;buyPetModal&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h3 </span><span class="s2">id</span><span class="s3">=&quot;buyPetTitle&quot;</span><span class="s0">&gt;</span><span class="s1">Завести?</span><span class="s0">&lt;/h3&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;modal-pet&quot; </span><span class="s2">id</span><span class="s3">=&quot;buyPetImg&quot;</span><span class="s0">&gt;</span><span class="s1">🐶</span><span class="s0">&lt;/p&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">style</span><span class="s3">=&quot;font-weight:700;margin-bottom:16px;&quot;</span><span class="s0">&gt;</span><span class="s1">Стоимость: </span><span class="s0">&lt;span </span><span class="s2">id</span><span class="s3">=&quot;buyPetPrice&quot; </span><span class="s2">style</span><span class="s3">=&quot;color:#8A6A00;background:#FFF7C2;padding:2px 10px;border-radius:999px;&quot;</span><span class="s0">&gt;</span><span class="s1">🪙 300</span><span class="s0">&lt;/span&gt;&lt;/p&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal-actions&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-soft&quot; </span><span class="s2">id</span><span class="s3">=&quot;buyPetCancel&quot;</span><span class="s0">&gt;</span><span class="s1">Отмена</span><span class="s0">&lt;/button&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary&quot; </span><span class="s2">id</span><span class="s3">=&quot;buyPetConfirm&quot;</span><span class="s0">&gt;</span><span class="s1">Купить! 🎉</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/div&gt;</span>
+
+<span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal-backdrop&quot; </span><span class="s2">id</span><span class="s3">=&quot;namePetModal&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h3&gt;</span><span class="s1">Как назовём?</span><span class="s0">&lt;/h3&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;modal-pet&quot; </span><span class="s2">id</span><span class="s3">=&quot;namePetImg&quot;</span><span class="s0">&gt;</span><span class="s1">🐱</span><span class="s0">&lt;/p&gt;</span>
+    <span class="s0">&lt;input </span><span class="s2">class</span><span class="s3">=&quot;input&quot; </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">id</span><span class="s3">=&quot;namePetInput&quot; </span><span class="s2">maxlength</span><span class="s3">=&quot;16&quot; </span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal-actions&quot; </span><span class="s2">style</span><span class="s3">=&quot;margin-top:16px;&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-soft&quot; </span><span class="s2">id</span><span class="s3">=&quot;namePetCancel&quot;</span><span class="s0">&gt;</span><span class="s1">Отмена</span><span class="s0">&lt;/button&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary&quot; </span><span class="s2">id</span><span class="s3">=&quot;namePetConfirm&quot;</span><span class="s0">&gt;</span><span class="s1">Готово! 🐾</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/div&gt;</span>
+
+<span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal-backdrop&quot; </span><span class="s2">id</span><span class="s3">=&quot;diaryModal&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h3 </span><span class="s2">id</span><span class="s3">=&quot;diaryTitle&quot;</span><span class="s0">&gt;</span><span class="s1">📔 Дневник</span><span class="s0">&lt;/h3&gt;</span>
+    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;modal-pet&quot; </span><span class="s2">id</span><span class="s3">=&quot;diaryEmoji&quot; </span><span class="s2">style</span><span class="s3">=&quot;font-size:50px;margin:8px 0 16px;&quot;</span><span class="s0">&gt;</span><span class="s1">🐱</span><span class="s0">&lt;/p&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;diaryList&quot; </span><span class="s2">style</span><span class="s3">=&quot;max-height:400px;overflow-y:auto;text-align:left;&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal-actions&quot; </span><span class="s2">style</span><span class="s3">=&quot;margin-top:16px;&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;document.getElementById('diaryModal').classList.remove('open')&quot;</span><span class="s0">&gt;</span><span class="s1">Закрыть</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/div&gt;</span>
+
+<span class="s0">&lt;footer </span><span class="s2">class</span><span class="s3">=&quot;footer&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;p&gt;</span><span class="s1">© Tamagotchi World 2025 · Сделано с ❤️ 🐾</span><span class="s0">&lt;/p&gt;</span>
+  <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;disclaimer&quot;</span><span class="s0">&gt;</span>
+    <span class="s1">Это некоммерческий фан-проект. Персонажи, напоминающие героев известных мультфильмов и игр,</span>
+    <span class="s1">использованы как отсылки в некоммерческих целях. Проект не связан с правообладателями и не</span>
+    <span class="s1">преследует цели извлечения прибыли. Если вы — правообладатель и хотите изменить или удалить</span>
+    <span class="s1">контент, свяжитесь с нами.</span>
+  <span class="s0">&lt;/p&gt;</span>
+<span class="s0">&lt;/footer&gt;</span>
+
+<span class="s0">&lt;script&gt;</span>
+<span class="s1">/* ============================================================</span>
+   <span class="s1">SOUNDS</span>
+   <span class="s1">============================================================ */</span>
+<span class="s1">const Sounds = (() =&gt; {</span>
+  <span class="s1">const cache = {};</span>
+  <span class="s1">let enabled = localStorage.getItem('sound_enabled') !== 'off';</span>
+  <span class="s1">function get(n){ if(cache[n]) return cache[n]; const a = new Audio('sounds/'+n+'.mp3'); a.volume=.55; cache[n]=a; return a; }</span>
+  <span class="s1">function play(n){ if(!enabled) return; try{ const a=get(n); a.currentTime=0; const p=a.play(); if(p&amp;&amp;p.catch)p.catch(()=&gt;{});}catch(e){} }</span>
+  <span class="s1">function toggle(){ enabled=!enabled; localStorage.setItem('sound_enabled', enabled?'on':'off'); return enabled; }</span>
+  <span class="s1">return { play, toggle, isEnabled: () =&gt; enabled };</span>
+<span class="s1">})();</span>
+
+<span class="s1">/* ============================================================</span>
+   <span class="s1">AUTH</span>
+   <span class="s1">============================================================ */</span>
+<span class="s1">const Auth = (() =&gt; {</span>
+  <span class="s1">const U='tamagotchi_users', S='tamagotchi_session', R='tamagotchi_resets';</span>
+  <span class="s1">function hash(s){ let h=0; for(let i=0;i&lt;s.length;i++){h=(h&lt;&lt;5)-h+s.charCodeAt(i);h|=0;} return String(h); }</span>
+  <span class="s1">function uid(p='id'){ return p+'_'+Date.now().toString(36)+Math.random().toString(36).slice(2,6); }</span>
+  <span class="s1">function getU(){ try{return JSON.parse(localStorage.getItem(U))||{};}catch{return{};} }</span>
+  <span class="s1">function saveU(u){ localStorage.setItem(U, JSON.stringify(u)); }</span>
+  <span class="s1">function getR(){ try{return JSON.parse(localStorage.getItem(R))||{};}catch{return{};} }</span>
+  <span class="s1">function saveR(r){ localStorage.setItem(R, JSON.stringify(r)); }</span>
+
+  <span class="s1">function currentUser(){ const l=localStorage.getItem(S); if(!l) return null; const u=getU(); return u[l]?{login:l,...u[l]}:null; }</span>
+  <span class="s1">function updateUser(l, patch){ const u=getU(); if(!u[l]) return; u[l]={...u[l],...patch}; saveU(u); }</span>
+  <span class="s1">function login(n){ localStorage.setItem(S,n); }</span>
+  <span class="s1">function logout(){ localStorage.removeItem(S); App.go('home'); }</span>
+
+  <span class="s1">function register(email, loginName, p1, p2){</span>
+    <span class="s1">email=email.trim().toLowerCase(); loginName=loginName.trim();</span>
+    <span class="s1">if(!email.includes('@')||!email.includes('.')) return 'Некорректная почта';</span>
+    <span class="s1">if(loginName.length&lt;2) return 'Логин короткий';</span>
+    <span class="s1">if(p1.length&lt;4) return 'Пароль минимум 4';</span>
+    <span class="s1">if(p1!==p2) return 'Пароли не совпадают';</span>
+    <span class="s1">const u=getU();</span>
+    <span class="s1">if(u[loginName]) return 'Логин занят';</span>
+    <span class="s1">for(const k in u) if(u[k].email===email) return 'Почта занята';</span>
+    <span class="s1">u[loginName]={ email, passwordHash:hash(p1), coins:500, pets:[], activePetUid:null,</span>
+      <span class="s1">inventory:{fish:2,bone:2,bread:1,grain:1}, achievements:[], stats:{feeds:0,petsCount:0,petsSum:0,gamesPlayed:0,marioCoins:0,pacmanWins:0,raceWins:0}, createdAt:Date.now() };</span>
+    <span class="s1">saveU(u); login(loginName); return null;</span>
+  <span class="s1">}</span>
+  <span class="s1">function tryLogin(l, p){</span>
+    <span class="s1">const u=getU(); const user=u[l.trim()];</span>
+    <span class="s1">if(!user) return 'Не найден';</span>
+    <span class="s1">if(user.passwordHash!==hash(p)) return 'Неверный пароль';</span>
+    <span class="s1">login(l.trim()); return null;</span>
+  <span class="s1">}</span>
+  <span class="s1">function requestReset(email){</span>
+    <span class="s1">email=email.trim().toLowerCase();</span>
+    <span class="s1">const u=getU(); let found=null;</span>
+    <span class="s1">for(const k in u) if(u[k].email===email){found=k;break;}</span>
+    <span class="s1">if(!found) return { error:'Почта не найдена' };</span>
+    <span class="s1">const code=String(Math.floor(100000+Math.random()*900000));</span>
+    <span class="s1">const r=getR(); r[found]={ code, expires:Date.now()+15*60*1000 }; saveR(r);</span>
+    <span class="s1">return { ok:true, login:found, code };</span>
+  <span class="s1">}</span>
+  <span class="s1">function confirmReset(login, code, newPass){</span>
+    <span class="s1">if(newPass.length&lt;4) return 'Пароль минимум 4';</span>
+    <span class="s1">const r=getR(); const rec=r[login];</span>
+    <span class="s1">if(!rec) return 'Код не найден';</span>
+    <span class="s1">if(Date.now()&gt;rec.expires) return 'Код истёк';</span>
+    <span class="s1">if(rec.code!==code.trim()) return 'Неверный код';</span>
+    <span class="s1">const u=getU(); if(!u[login]) return 'Не найден';</span>
+    <span class="s1">u[login].passwordHash=hash(newPass); saveU(u);</span>
+    <span class="s1">delete r[login]; saveR(r); return null;</span>
+  <span class="s1">}</span>
+  <span class="s1">function addCoins(amount){</span>
+    <span class="s1">const user=currentUser(); if(!user) return;</span>
+    <span class="s1">const newCoins=Math.max(0, user.coins + amount);</span>
+    <span class="s1">updateUser(user.login, { coins:newCoins });</span>
+    <span class="s1">const el=document.getElementById('coinsHeader');</span>
+    <span class="s1">if(el) el.textContent=newCoins;</span>
+  <span class="s1">}</span>
+  <span class="s1">function addStat(key, amount=1){</span>
+    <span class="s1">const user=currentUser(); if(!user) return;</span>
+    <span class="s1">const stats = { ...(user.stats||{}) };</span>
+    <span class="s1">stats[key] = (stats[key]||0) + amount;</span>
+    <span class="s1">updateUser(user.login, { stats });</span>
+  <span class="s1">}</span>
+  <span class="s1">return { currentUser, updateUser, register, tryLogin, login, logout, requestReset, confirmReset, addCoins, addStat, uid, hash };</span>
+<span class="s1">})();</span>
+
+<span class="s1">/* ============================================================</span>
+   <span class="s1">ACHIEVEMENTS</span>
+   <span class="s1">============================================================ */</span>
+<span class="s1">const ACHIEVEMENTS = [</span>
+  <span class="s1">{ id:'first_pet',  icon:'🐣', name:'Первый друг',  desc:'Завёл первого питомца',           check:u =&gt; (u.pets||[]).length &gt;= 1 },</span>
+  <span class="s1">{ id:'collector',  icon:'🐾', name:'Коллекционер', desc:'Собрал 3 разных питомца',         check:u =&gt; (u.pets||[]).length &gt;= 3 },</span>
+  <span class="s1">{ id:'hotelier',   icon:'🏨', name:'Отельер',      desc:'Завёл 5 питомцев',                check:u =&gt; (u.pets||[]).length &gt;= 5 },</span>
+  <span class="s1">{ id:'feeder',     icon:'🍖', name:'Кормилец',     desc:'Покормил питомцев 10 раз',        check:u =&gt; (u.stats?.feeds||0) &gt;= 10 },</span>
+  <span class="s1">{ id:'lover',      icon:'💖', name:'Любимчик',     desc:'Погладил питомцев 20 раз',        check:u =&gt; (u.stats?.petsSum||0) &gt;= 20 },</span>
+  <span class="s1">{ id:'gamer',      icon:'🎮', name:'Геймер',       desc:'Сыграл 5 мини-игр',               check:u =&gt; (u.stats?.gamesPlayed||0) &gt;= 5 },</span>
+  <span class="s1">{ id:'racer',      icon:'🏎️', name:'Гонщик',       desc:'Заработал 200 монет в Гонках',    check:u =&gt; (u.stats?.raceWins||0) &gt;= 200 },</span>
+  <span class="s1">{ id:'mario',      icon:'🍄', name:'Мариовец',     desc:'Собрал 10+ монет в Марио',        check:u =&gt; (u.stats?.marioCoins||0) &gt;= 10 },</span>
+  <span class="s1">{ id:'pacman',     icon:'👻', name:'Охотник',      desc:'Победил в Пак-паке',              check:u =&gt; (u.stats?.pacmanWins||0) &gt;= 1 },</span>
+  <span class="s1">{ id:'rich',       icon:'🪙', name:'Богач',        desc:'Накопил 5000 монет',              check:u =&gt; u.coins &gt;= 5000 }</span>
+<span class="s1">];</span>
+
+<span class="s1">function checkAchievements(){</span>
+  <span class="s1">const user = Auth.currentUser(); if(!user) return;</span>
+  <span class="s1">const unlocked = user.achievements || [];</span>
+  <span class="s1">const newOnes = [];</span>
+  <span class="s1">ACHIEVEMENTS.forEach(a =&gt; {</span>
+    <span class="s1">if(unlocked.includes(a.id)) return;</span>
+    <span class="s1">if(a.check(user)){ unlocked.push(a.id); newOnes.push(a); }</span>
+  <span class="s1">});</span>
+  <span class="s1">if(newOnes.length){</span>
+    <span class="s1">Auth.updateUser(user.login, { achievements: unlocked });</span>
+    <span class="s1">newOnes.forEach((a, i) =&gt; setTimeout(() =&gt; showToast(a), i*800));</span>
+  <span class="s1">}</span>
+<span class="s1">}</span>
+<span class="s1">function showToast(a){</span>
+  <span class="s1">Sounds.play('happy');</span>
+  <span class="s1">const el = document.createElement('div');</span>
+  <span class="s1">el.className = 'toast-ach';</span>
+  <span class="s1">el.innerHTML = `&lt;span class=&quot;toast-icon&quot;&gt;${a.icon}&lt;/span&gt;&lt;div&gt;&lt;div class=&quot;toast-title&quot;&gt;🏆 Достижение!&lt;/div&gt;&lt;div class=&quot;toast-name&quot;&gt;${a.name}&lt;/div&gt;&lt;/div&gt;`;</span>
+  <span class="s1">document.body.appendChild(el);</span>
+  <span class="s1">setTimeout(() =&gt; { el.classList.add('out'); setTimeout(() =&gt; el.remove(), 500); }, 3500);</span>
+<span class="s1">}</span>
+
+<span class="s1">/* ============================================================</span>
+   <span class="s1">PET_SPECIES — питомцы</span>
+   <span class="s1">Disney-персонажи — пародийные имена (некоммерческий фан-проект)</span>
+   <span class="s1">============================================================ */</span>
+<span class="s1">function diaryTemplate(emoji, lines){ return { emoji, lines }; }</span>
+
+<span class="s1">const PET_SPECIES = [</span>
+  <span class="s1">/* --- Базовые --- */</span>
+  <span class="s1">{ id:'cat', name:'Кошка', defaultName:'Мурзик', emoji:'🐱', trait:'Ласковая', sound:'meow', soundIcon:'🔊 мяу',</span>
+    <span class="s1">favFood:'fish', hunger:70, mood:90, price:0, cartoon:false, position:'on-bed', walkable:true,</span>
+    <span class="s1">food:['fish','milk','bread'],</span>
+    <span class="s1">diary: diaryTemplate('🐱', ['Сегодня я спал на подоконнике и видел сон про рыбок.','Хозяйка погладила меня 7 раз. Я мурчал.','Снова дождь. Лежу под пледом.','Поймал солнечный зайчик.','Разбудил всех в 6 утра — я же будильник!','Изучал новый столик — вкусно пахнет.','Сегодня мне снился Маус.','Сидел на столе, смотрел в монитор.','Молочко было тёплым. Хороший день.','Уронил кружку. Не жалею.']) },</span>
+
+  <span class="s1">{ id:'dog', name:'Собака', defaultName:'Бублик', emoji:'🐶', trait:'Весёлая', sound:'bark', soundIcon:'🔊 гав',</span>
+    <span class="s1">favFood:'bone', hunger:60, mood:95, price:300, cartoon:false, position:'floor', walkable:true,</span>
+    <span class="s1">food:['bone','meat','bread'],</span>
+    <span class="s1">diary: diaryTemplate('🐶', ['Погнал за хвостом. Опять.','Принёс палку! Хозяйка рада.','Сегодня нашёл новую игрушку — носок.','Обнял всех, кого смог.','Вилял хвостом 1000 раз.','На улице встретил кота. Мы друзья.','Прыгал на кровать, пока не сказали нельзя.','Мечтаю о большой косточке.','Смотрел в окно. Там птицы!','Спал у ног весь день.']) },</span>
+
+  <span class="s1">{ id:'duck', name:'Утка', defaultName:'Кряк', emoji:'🦆', trait:'Спокойная', sound:'quack', soundIcon:'🔊 кря',</span>
+    <span class="s1">favFood:'grain', hunger:65, mood:85, price:400, cartoon:false, position:'floor', walkable:true,</span>
+    <span class="s1">food:['grain','bread','worm'],</span>
+    <span class="s1">diary: diaryTemplate('🦆', ['Ходил по комнате вразвалочку.','Купался в тазике. Хорошо!','Крякнул три раза — так надо.','Смотрел на облака через окно.','Нашёл зёрнышко под кроватью.','Познакомился с Чайкой (по переписке).','Учил хомяка крякать. Не вышло.','Составил список из 100 дел. Не начал.','Спал стоя. Удобно.','Съел хлебушек. Всё хорошо.']) },</span>
+
+  <span class="s1">{ id:'hamster', name:'Хомяк', defaultName:'Хома', emoji:'🐹', trait:'Запасливый', sound:'meow', soundIcon:'🔊 пи',</span>
+    <span class="s1">favFood:'grain', hunger:75, mood:88, price:600, cartoon:false, position:'on-bed', walkable:true,</span>
+    <span class="s1">food:['grain','bread','worm'],</span>
+    <span class="s1">diary: diaryTemplate('🐹', ['Принёс 5 зёрнышек в щеках. Запас!','Пробежал в колесе 5 км.','Закопал хлебушек в углу. Никому не скажу.','Съел зерно. Ещё хочу.','Уронил подушку. Ой.','Спрятал червячка под ковёр.','Сегодня я — хранитель запасов.','Разгрыз новую игрушку.','Мечтаю о второй комнате для запасов.','Смотрел на Рыбку. Завидую.']) },</span>
+
+  <span class="s1">{ id:'fish', name:'Рыбка', defaultName:'Пузырь', emoji:'🐠', trait:'Тихая', sound:'bubble', soundIcon:'🔊 буль',</span>
+    <span class="s1">favFood:'worm', hunger:55, mood:92, price:700, cartoon:false, position:'in-pool', walkable:false,</span>
+    <span class="s1">food:['worm','bread'],</span>
+    <span class="s1">diary: diaryTemplate('🐠', ['Буль-буль.','Смотрел через стекло.','Пустил пузырики.','Плавал кругами.','Нашёл червячка — счастье!','Сегодня я мечтал о море.','Познакомился с Ари. Она милая.','Спал с открытыми глазами (как всегда).','Думал о смысле воды.','Пузырьки — это весело.']) },</span>
+
+  <span class="s1">{ id:'peacock', name:'Павлин', defaultName:'Гордей', emoji:'🦚', trait:'Гордый', sound:'bark', soundIcon:'🔊 курлык',</span>
+    <span class="s1">favFood:'grain', hunger:70, mood:88, price:900, cartoon:false, position:'floor', walkable:true,</span>
+    <span class="s1">food:['grain','bread','worm'],</span>
+    <span class="s1">diary: diaryTemplate('🦚', ['Раскрыл хвост. Все восхищались.','Сегодня я особенно красив.','Расчесал перья 3 раза.','Смотрел в зеркало. Долго.','Позировал для полароидов.','Придумал новую позу. Роскошно.','Съел зёрнышко изящно.','Прошёлся по комнате как по подиуму.','Покрасовался перед Рыбкой.','День прошёл достойно.']) },</span>
+
+  <span class="s1">{ id:'fox', name:'Лиса', defaultName:'Рыжик', emoji:'🦊', trait:'Хитрая', sound:'meow', soundIcon:'🔊 фыр',</span>
+    <span class="s1">favFood:'meat', hunger:65, mood:92, price:1100, cartoon:false, position:'floor', walkable:true,</span>
+    <span class="s1">food:['meat','bone','bread'],</span>
+    <span class="s1">diary: diaryTemplate('🦊', ['Придумал план. Наверняка сработает.','Обхитрил хомяка и забрал зёрнышко.','Ходил по комнате, изучал углы.','Улыбнулся в зеркало. Загадочно.','Спрятал косточку. Никому!','Сегодня был особенно хитрым.','Мечтаю о курятнике...','Смотрел в окно. Строил план.','Притворился спящим.','Рыжий — это стиль жизни.']) },</span>
+
+  <span class="s1">{ id:'panda', name:'Панда', defaultName:'Бамбук', emoji:'🐼', trait:'Сонная', sound:'meow', soundIcon:'🔊 урчит',</span>
+    <span class="s1">favFood:'bread', hunger:80, mood:90, price:1300, cartoon:false, position:'on-bed', walkable:true,</span>
+    <span class="s1">food:['bread','grain','worm'],</span>
+    <span class="s1">diary: diaryTemplate('🐼', ['Спал 14 часов. Норм.','Съел хлебушек. Опять спать.','Приснился бамбук.','Проснулся. Поел. Уснул.','Сегодня был активным: 5 минут.','Спал на кровати. Удобно.','Смотрел на Рыбку сквозь сон.','Потянулся. Уснул.','Разбудили для кормления — не пожалел.','Мечтаю о большой подушке.']) },</span>
+
+  <span class="s1">{ id:'frog', name:'Жабка', defaultName:'Квак', emoji:'🐸', trait:'Прыгучая', sound:'bubble', soundIcon:'🔊 ква',</span>
+    <span class="s1">favFood:'worm', hunger:70, mood:88, price:1000, cartoon:false, position:'floor', walkable:true,</span>
+    <span class="s1">food:['worm','bread','grain'],</span>
+    <span class="s1">diary: diaryTemplate('🐸', ['Прыгнул на стол. Высоко!','Съел червячка. Вкусно.','Сидел на ковре и квакал.','Прыгал по комнате 20 минут.','Смотрел на дождь.','Нашёл муху. Она улетела.','Прыгнул на кровать. Прыгнул обратно.','Сегодня я — король ковра.','Познакомился с Уткой. Она не квакает.','Мечтаю о болоте.']) },</span>
+
+  <span class="s1">{ id:'tiger', name:'Тигр', defaultName:'Полосатик', emoji:'🐯', trait:'Смелый', sound:'bark', soundIcon:'🔊 р-р-р',</span>
+    <span class="s1">favFood:'meat', hunger:75, mood:92, price:1500, cartoon:false, position:'floor', walkable:true,</span>
+    <span class="s1">food:['meat','bone','bread'],</span>
+    <span class="s1">diary: diaryTemplate('🐯', ['Рычал на пылесос. Победил.','Съел мясо. Стал сильнее.','Прошёлся по комнате — все расступились.','Смотрел в окно на птиц. Строил план.','Позировал. Я красив.','Обнял подушку. Только я это знаю.','Полосы в порядке. Проверил.','Мечтаю о джунглях.','Прыгнул на стол. Впечатляет.','Сегодня я — главный в комнате.']) },</span>
+
+  <span class="s1">/* ============================================================</span>
+     <span class="s1">МУЛЬТЯШНЫЕ — пародийные имена (некоммерческий фан-проект)</span>
+     <span class="s1">============================================================ */</span>
+  <span class="s1">{ id:'simba', name:'Лео', defaultName:'Лео', emoji:'🦁', trait:'Храбрый', sound:'bark', soundIcon:'🔊 р-р-р',</span>
+    <span class="s1">favFood:'meat', hunger:80, mood:95, price:2500, cartoon:true, position:'floor', walkable:true,</span>
+    <span class="s1">food:['meat','bone','bread'],</span>
+    <span class="s1">diary: diaryTemplate('🦁', ['Смотрел на солнце. Как в детстве.','Пел песню. Все слушали.','Вспоминал отца.','Стою на ковре — как на скале.','Сегодня я — король комнаты.','Обнял друга. Друзья — сила.','Рычал. Впечатляюще.','Мечтаю о саванне.','Смотрел на птиц.','Всё идёт своим чередом.']) },</span>
+
+  <span class="s1">{ id:'mouse', name:'Маус', defaultName:'Маус', emoji:'🐭', trait:'Весёлый', sound:'meow', soundIcon:'🔊 ха-ха',</span>
+    <span class="s1">favFood:'bread', hunger:65, mood:98, price:3000, cartoon:true, position:'floor', walkable:true,</span>
+    <span class="s1">food:['bread','milk','fish'],</span>
+    <span class="s1">diary: diaryTemplate('🐭', ['Хо-хо! Хороший день!','Познакомился с новым другом.','Спел песенку.','Танцевал под музыку.','Нашёл хлебушек. Ура!','Улыбался весь день.','Рассказал шутку. Все смеялись.','Мечтаю о большом парке.','Позировал для полароида.','Весёлый — это образ жизни!']) },</span>
+
+  <span class="s1">{ id:'mushroom', name:'Грибочек', defaultName:'Гриша', emoji:'🍄', trait:'Загадочный', sound:'bubble', soundIcon:'🔊 пуф',</span>
+    <span class="s1">favFood:'bread', hunger:60, mood:80, price:1200, cartoon:true, position:'floor', walkable:true,</span>
+    <span class="s1">food:['bread','worm','milk'],</span>
+    <span class="s1">diary: diaryTemplate('🍄', ['Пуф.','Пустил споры.','Стоял под окном. Думал.','Меня полили. Спасибо.','Смотрел на звёзды.','Сегодня я — самый большой гриб в комнате.','Спрятался за стулом.','Придумал новую шляпку.','Мечтаю о лесе.','Пуф — это моё всё.']) },</span>
+
+  <span class="s1">{ id:'bambi', name:'Бэм', defaultName:'Бэм', emoji:'🦌', trait:'Робкий', sound:'meow', soundIcon:'🔊 фыр',</span>
+    <span class="s1">favFood:'grain', hunger:70, mood:88, price:2200, cartoon:true, position:'floor', walkable:true,</span>
+    <span class="s1">food:['grain','bread','worm'],</span>
+    <span class="s1">diary: diaryTemplate('🦌', ['Гулял по комнате. Красиво.','Познакомился с Грибочком.','Смотрел на бабочку.','Пил воду из миски.','Испугался шороха. Обнял подушку.','Сегодня я — смелее.','Нашёл красивый листик.','Смотрел на закат.','Мама бы мной гордилась.','День прошёл тихо.']) },</span>
+
+  <span class="s1">{ id:'ariel', name:'Ари', defaultName:'Ари', emoji:'🧜‍♀️', trait:'Мечтательная', sound:'bubble', soundIcon:'🔊 пение',</span>
+    <span class="s1">favFood:'fish', hunger:65, mood:96, price:3500, cartoon:true, position:'in-pool', walkable:false,</span>
+    <span class="s1">food:['fish','worm','bread'],</span>
+    <span class="s1">diary: diaryTemplate('🧜‍♀️', ['Пела песню про море.','Нашла новую вещь в комнате. Что это?','Мечтаю о принце.','Познакомилась с Рыбкой. Она милая.','Расчесала волосы ракушкой.','Смотрела на звёзды через окно.','Сегодня я — часть вашего мира.','Нашла вилку. Что это такое?!','Хочу узнать, что такое «дорога».','Пела весь день.']) },</span>
+
+  <span class="s1">{ id:'seagull', name:'Чайка', defaultName:'Кеша', emoji:'🕊️', trait:'Озорная', sound:'bark', soundIcon:'🔊 ки-ки',</span>
+    <span class="s1">favFood:'fish', hunger:70, mood:92, price:1400, cartoon:true, position:'floor', walkable:true,</span>
+    <span class="s1">food:['fish','bread','worm'],</span>
+    <span class="s1">diary: diaryTemplate('🕊️', ['Пытался унести хлебушек.','Кричал на всех.','Села на стол. Мой!','Нашла рыбку. Счастье!','Летала по комнате. Ой.','Смотрела на улицу.','Сегодня я — самая громкая.','Позировала. Я красива.','Украла кружку. Хи-хи.','Ки-ки-ки!']) },</span>
+
+  <span class="s1">{ id:'ratatouille', name:'Реми', defaultName:'Реми', emoji:'🐀', trait:'Гурман', sound:'meow', soundIcon:'🔊 пип',</span>
+    <span class="s1">favFood:'bread', hunger:75, mood:94, price:2000, cartoon:true, position:'on-desk', walkable:true,</span>
+    <span class="s1">food:['bread','meat','milk'],</span>
+    <span class="s1">diary: diaryTemplate('🐀', ['Попробовал хлебушек. Восхитительно!','Составил рецепт.','Нашёл сыр? Нет, но ищу.','Познакомился с кошкой. Напряжённо.','Пробовал рыбу. 7/10.','Сидел на столе. Думал о еде.','Сегодня готовил. Из ничего.','Понюхал кружку. Кофе!','Мечтаю о парижском ресторане.','Еда — это искусство!']) },</span>
+
+  <span class="s1">{ id:'bagheera', name:'Багир', defaultName:'Багир', emoji:'🐆', trait:'Мудрый', sound:'bark', soundIcon:'🔊 рык',</span>
+    <span class="s1">favFood:'meat', hunger:75, mood:92, price:2600, cartoon:true, position:'floor', walkable:true,</span>
+    <span class="s1">food:['meat','bone','bread'],</span>
+    <span class="s1">diary: diaryTemplate('🐆', ['Смотрел на луну.','Прыгнул на стол. Бесшумно.','Наблюдал за комнатой.','Мечтаю о джунглях.','Обучил Грибочка мудрости.','Сидел в тени. Думал.','Сегодня я — молчаливый страж.','Прошёлся по комнате. Все заметили.','Рычал на пылесос. Победил.','Чёрная пантера — это стиль.']) },</span>
+
+  <span class="s1">{ id:'pooh', name:'Пухлик', defaultName:'Пухлик', emoji:'🐻', trait:'Добрый', sound:'meow', soundIcon:'🔊 пых',</span>
+    <span class="s1">favFood:'bread', hunger:85, mood:96, price:2400, cartoon:true, position:'on-bed', walkable:true,</span>
+    <span class="s1">food:['bread','milk','fish'],</span>
+    <span class="s1">diary: diaryTemplate('🐻', ['Съел весь хлебушек. Не жалею.','Ходил по комнате в поисках мёда.','Пыхтел.','Обнял Пяту.','Нашёл мёд? Нет. Ещё ищу.','Сегодня был особенно добрым.','Спал на кровати. Уютно.','Мечтаю о горшочке мёда.','Думал о смысле жизни.','Пых-пых!']) },</span>
+
+  <span class="s1">{ id:'piglet', name:'Пята', defaultName:'Пята', emoji:'🐷', trait:'Робкий', sound:'meow', soundIcon:'🔊 хрю',</span>
+    <span class="s1">favFood:'bread', hunger:70, mood:90, price:1800, cartoon:true, position:'floor', walkable:true,</span>
+    <span class="s1">food:['bread','grain','milk'],</span>
+    <span class="s1">diary: diaryTemplate('🐷', ['Прятался под кроватью. Немного.','Держал Пухлика за лапку.','Нашёл жёлудь. Маленький, но мой.','Хрюкнул.','Сегодня был храбрым: 3 минуты.','Мечтаю о большой поляне.','Смотрел на пчёл через окно.','Обнял подушку.','Хрю-хрю!','День прошёл спокойно.']) },</span>
+
+  <span class="s1">{ id:'scrooge', name:'Скрудж', defaultName:'Скрудж', emoji:'🦆', trait:'Богатый', sound:'quack', soundIcon:'🔊 кря-кря',</span>
+    <span class="s1">favFood:'bread', hunger:60, mood:85, price:4000, cartoon:true, position:'on-desk', walkable:true,</span>
+    <span class="s1">food:['bread','grain','worm'],</span>
+    <span class="s1">diary: diaryTemplate('🦆', ['Пересчитал монеты. Всё на месте.','Нашёл монетку под ковром!','Сегодня я — на 1 монету богаче.','Смотрел в окно. Думал о процентах.','Спрятал монеты. В надёжном месте.','Мечтаю о хранилище.','Ходил по комнате. Экономно.','Купил хлебушек. По скидке!','Грабить? Нет. Зарабатывать — да!','Кря! Богатство — это святое.']) },</span>
+
+  <span class="s1">{ id:'huggy', name:'Хаги Ваги', defaultName:'Хаги', emoji:'👹', trait:'Обнимающий', sound:'bark', soundIcon:'🔊 ррр',</span>
+    <span class="s1">favFood:'meat', hunger:80, mood:75, price:5000, cartoon:false, position:'floor', walkable:true,</span>
+    <span class="s1">food:['meat','bone','bread'],</span>
+    <span class="s1">diary: diaryTemplate('👹', ['Обнял подушку. Очень сильно.','Смотрел в окно. Ждал.','Порвал игрушку. Случайно.','Сегодня я — дружелюбный.','Обниму тебя. Обещаю — нежно.','Рычал. Мягко.','Хожу по комнате. Ищу друзей.','Мечтаю о хорошем объятии.','Хагги-хагги!','Обнимаю тебя через экран.']) },</span>
+
+  <span class="s1">/* === Sally Face: Салли и Ларри — оба парни === */</span>
+  <span class="s1">{ id:'sally', name:'Салли Фишер', defaultName:'Салли', emoji:'🧑‍🎤', trait:'Загадочный', sound:'meow', soundIcon:'🔊 шёпот',</span>
+    <span class="s1">favFood:'fish', hunger:70, mood:88, price:4500, cartoon:false, position:'floor', walkable:true,</span>
+    <span class="s1">food:['fish','bread','milk'],</span>
+    <span class="s1">diary: diaryTemplate('🧑‍🎤', ['Сегодня приснился странный сон. Записал в блокнот.','Смотрел в зеркало. Протез на месте.','Ларри опять звал играть. Пошёл.','Тихо в комнате. Хорошо.','Прочитал письмо от мамы.','Проверил швы на лице. Всё заживает.','Слушал музыку в наушниках.','Вспоминал старых друзей.','Нарисовал в блокноте комнату. Похоже!','Ш-ш-ш. Всё будет хорошо.']) },</span>
+
+  <span class="s1">{ id:'larry', name:'Ларри Джонсон', defaultName:'Ларри', emoji:'🧑‍🎤', trait:'Спокойный', sound:'bark', soundIcon:'🔊 привет',</span>
+    <span class="s1">favFood:'meat', hunger:75, mood:90, price:4200, cartoon:false, position:'on-bed', walkable:true,</span>
+    <span class="s1">food:['meat','bread','milk'],</span>
+    <span class="s1">diary: diaryTemplate('🧑‍🎤', ['Слушал кассеты весь вечер.','Обнял Салли. Хорошо.','Записал новую песню в голове.','Приготовил бутерброд. С сыром!','Поговорил с Реми. О еде, конечно.','Лежал на кровати. Думал о группе.','Надел футболку с логотипом. Стиль!','Посмотрел на монитор. Там аниме.','Мечтаю о большой сцене.','Привет, Салли.']) }</span>
+<span class="s1">];</span>
+<span class="s1">function getSpecies(id){ return PET_SPECIES.find(s=&gt;s.id===id); }</span>
+
+<span class="s1">/* ============================================================</span>
+   <span class="s1">SHOP</span>
+   <span class="s1">============================================================ */</span>
+<span class="s1">const SHOP_ITEMS = [</span>
+  <span class="s1">{ id:'fish',  name:'Рыбка',    emoji:'🐟', price:20, desc:'Кошки, рыбки, Ари, Салли' },</span>
+  <span class="s1">{ id:'milk',  name:'Молоко',   emoji:'🥛', price:15, desc:'Тёплое молочко для всех' },</span>
+  <span class="s1">{ id:'bone',  name:'Косточка', emoji:'🦴', price:25, desc:'Для собаки, Лео, Багира' },</span>
+  <span class="s1">{ id:'meat',  name:'Мясо',     emoji:'🍖', price:35, desc:'Для хищников' },</span>
+  <span class="s1">{ id:'grain', name:'Зерно',    emoji:'🌾', price:15, desc:'Для утки, хомяка, Бэма' },</span>
+  <span class="s1">{ id:'worm',  name:'Червячок', emoji:'🪱', price:20, desc:'Для рыбки, утки, жабки' },</span>
+  <span class="s1">{ id:'bread', name:'Хлебушек', emoji:'🍞', price:12, desc:'Подходит всем' }</span>
+<span class="s1">];</span>
+<span class="s1">function getItem(id){ return SHOP_ITEMS.find(i=&gt;i.id===id); }</span>
+
+<span class="s1">/* ============================================================</span>
+   <span class="s1">EMOTION</span>
+   <span class="s1">============================================================ */</span>
+<span class="s1">function getEmotion(pet){</span>
+  <span class="s1">const h = new Date().getHours();</span>
+  <span class="s1">if(h &gt;= 22 || h &lt; 6) return { id:'sleepy', icon:'😴', label:'Сонный', cls:'emotion-sleepy', phrase:'Zzz...' };</span>
+  <span class="s1">if(pet.hunger &lt; 25) return { id:'hungry', icon:'😫', label:'Голодный', cls:'emotion-hungry', phrase:'Я голоден!' };</span>
+  <span class="s1">if(pet.mood &lt; 30)   return { id:'sad',    icon:'😢', label:'Грустный', cls:'emotion-sad',    phrase:'Мне грустно...' };</span>
+  <span class="s1">if(pet.hunger &gt; 80 &amp;&amp; pet.mood &gt; 80) return { id:'happy', icon:'🤩', label:'Счастливый', cls:'emotion-happy', phrase:'Ура! Я счастлив!' };</span>
+  <span class="s1">return { id:'normal', icon:'🙂', label:'Обычный', cls:'', phrase:'' };</span>
+<span class="s1">}</span>
+
+<span class="s1">function getTimeClass(){</span>
+  <span class="s1">const h = new Date().getHours();</span>
+  <span class="s1">if(h &gt;= 6 &amp;&amp; h &lt; 12) return 'time-morning';</span>
+  <span class="s1">if(h &gt;= 12 &amp;&amp; h &lt; 18) return 'time-day';</span>
+  <span class="s1">if(h &gt;= 18 &amp;&amp; h &lt; 22) return 'time-evening';</span>
+  <span class="s1">return 'time-night';</span>
+<span class="s1">}</span>
+
+<span class="s1">/* ============================================================</span>
+   <span class="s1">APP</span>
+   <span class="s1">============================================================ */</span>
+<span class="s1">const App = (() =&gt; {</span>
+  <span class="s1">let currentScreen = 'home';</span>
+  <span class="s1">let pendingSpecies=null, pendingBuySpecies=null, pendingNameSpecies=null, pendingResetLogin=null;</span>
+  <span class="s1">let clockTimer=null, walkTimer=null, emotionTimer=null, currentGame=null;</span>
+
+  <span class="s1">const PROTECTED = ['rooms','room','minigames','shop','play','achievements'];</span>
+  <span class="s1">function go(screen){</span>
+    <span class="s1">const user = Auth.currentUser();</span>
+    <span class="s1">if(PROTECTED.includes(screen) &amp;&amp; !user) screen = 'login';</span>
+    <span class="s1">if(screen === 'room' &amp;&amp; user &amp;&amp; (!user.pets || user.pets.length === 0)) screen = 'home';</span>
+    <span class="s1">if(currentGame &amp;&amp; screen !== 'play'){ currentGame.stop(); currentGame = null; }</span>
+    <span class="s1">stopRoomTimers();</span>
+
+    <span class="s1">document.querySelectorAll('.screen').forEach(s =&gt; s.classList.remove('active'));</span>
+    <span class="s1">const t = document.getElementById('screen-'+screen);</span>
+    <span class="s1">if(t) t.classList.add('active');</span>
+    <span class="s1">currentScreen = screen;</span>
+    <span class="s1">renderHeader();</span>
+    <span class="s1">window.scrollTo({ top:0, behavior:'smooth' });</span>
+
+    <span class="s1">if(screen === 'home')         renderHome();</span>
+    <span class="s1">if(screen === 'rooms')        renderHotel();</span>
+    <span class="s1">if(screen === 'room')         renderRoom();</span>
+    <span class="s1">if(screen === 'shop')         renderShop();</span>
+    <span class="s1">if(screen === 'minigames')    renderGamesHub();</span>
+    <span class="s1">if(screen === 'achievements') renderAchievements();</span>
+    <span class="s1">checkAchievements();</span>
+  <span class="s1">}</span>
+
+  <span class="s1">function stopRoomTimers(){</span>
+    <span class="s1">if(clockTimer)  { clearInterval(clockTimer); clockTimer = null; }</span>
+    <span class="s1">if(walkTimer)   { clearInterval(walkTimer); walkTimer = null; }</span>
+    <span class="s1">if(emotionTimer){ clearInterval(emotionTimer); emotionTimer = null; }</span>
+  <span class="s1">}</span>
+
+  <span class="s1">function renderHeader(){</span>
+    <span class="s1">const el = document.getElementById('header');</span>
+    <span class="s1">const user = Auth.currentUser();</span>
+    <span class="s1">const coins = user ? user.coins : 0;</span>
+    <span class="s1">const achCount = user ? (user.achievements||[]).length : 0;</span>
+    <span class="s1">el.innerHTML = `</span>
+      <span class="s1">&lt;div class=&quot;header-logo&quot; onclick=&quot;App.go('home')&quot;&gt;🐣 Tamagotchi&lt;span&gt; World&lt;/span&gt;&lt;/div&gt;</span>
+      <span class="s1">&lt;div class=&quot;header-right&quot;&gt;</span>
+        <span class="s1">&lt;button class=&quot;btn btn-soft btn-sm&quot; onclick=&quot;App.toggleSound()&quot;&gt;${Sounds.isEnabled()?'🔊':'🔇'}&lt;/button&gt;</span>
+        <span class="s1">${user ? `</span>
+          <span class="s1">&lt;button class=&quot;btn btn-soft btn-sm&quot; onclick=&quot;App.go('rooms')&quot; title=&quot;Отель&quot;&gt;🏨&lt;/button&gt;</span>
+          <span class="s1">&lt;button class=&quot;btn btn-soft btn-sm&quot; onclick=&quot;App.go('achievements')&quot; title=&quot;Достижения&quot; style=&quot;position:relative;&quot;&gt;</span>
+            <span class="s1">🏆${achCount&gt;0?`&lt;span class=&quot;badge-num&quot;&gt;${achCount}&lt;/span&gt;`:''}</span>
+          <span class="s1">&lt;/button&gt;</span>
+          <span class="s1">&lt;div class=&quot;coins-pill&quot;&gt;🪙 &lt;span id=&quot;coinsHeader&quot;&gt;${coins}&lt;/span&gt;&lt;/div&gt;</span>
+          <span class="s1">&lt;div class=&quot;user-pill&quot;&gt;&lt;span class=&quot;user-avatar&quot;&gt;${user.login[0].toUpperCase()}&lt;/span&gt;&lt;span&gt;${user.login}&lt;/span&gt;&lt;/div&gt;</span>
+          <span class="s1">&lt;button class=&quot;btn btn-soft btn-sm&quot; onclick=&quot;Auth.logout()&quot;&gt;Выйти&lt;/button&gt;</span>
+        <span class="s1">` : `</span>
+          <span class="s1">&lt;button class=&quot;btn btn-soft btn-sm&quot; onclick=&quot;App.go('login')&quot;&gt;Войти&lt;/button&gt;</span>
+          <span class="s1">&lt;button class=&quot;btn btn-primary btn-sm&quot; onclick=&quot;App.go('register')&quot;&gt;Регистрация&lt;/button&gt;</span>
+        <span class="s1">`}</span>
+      <span class="s1">&lt;/div&gt;</span>
+    <span class="s1">`;</span>
+  <span class="s1">}</span>
+  <span class="s1">function toggleSound(){ Sounds.toggle(); renderHeader(); }</span>
+
+  <span class="s1">/* ---------- ГЛАВНАЯ ---------- */</span>
+  <span class="s1">function renderHome(){</span>
+    <span class="s1">const grid = document.getElementById('petsGrid');</span>
+    <span class="s1">const heroSub = document.getElementById('heroSub');</span>
+    <span class="s1">const user = Auth.currentUser();</span>
+    <span class="s1">heroSub.textContent = user ? `С возвращением, ${user.login}! Питомцы ждут 🐾` : 'Выбери друга — и начни заботиться!';</span>
+
+    <span class="s1">const sorted = [...PET_SPECIES].sort((a,b) =&gt; {</span>
+      <span class="s1">const ao = a.cartoon?1:0, bo = b.cartoon?1:0;</span>
+      <span class="s1">if(ao !== bo) return ao - bo;</span>
+      <span class="s1">return a.price - b.price;</span>
+    <span class="s1">});</span>
+
+    <span class="s1">grid.innerHTML = sorted.map(sp =&gt; {</span>
+      <span class="s1">const owned = user &amp;&amp; user.pets ? user.pets.some(p=&gt;p.type===sp.id) : false;</span>
+      <span class="s1">const priceTag = sp.price === 0 ? 'Первый — бесплатно' : `🪙 ${sp.price}`;</span>
+      <span class="s1">const priceCls = sp.cartoon ? 'cartoon' : '';</span>
+      <span class="s1">const badgeCls = sp.cartoon ? 'cartoon' : '';</span>
+      <span class="s1">return `</span>
+        <span class="s1">&lt;div class=&quot;pet-card&quot;&gt;</span>
+          <span class="s1">&lt;div class=&quot;pet-sound&quot;&gt;${sp.soundIcon}&lt;/div&gt;</span>
+          <span class="s1">&lt;div class=&quot;pet-avatar&quot;&gt;${sp.emoji}&lt;/div&gt;</span>
+          <span class="s1">&lt;h3&gt;${sp.name}&lt;/h3&gt;</span>
+          <span class="s1">&lt;div class=&quot;pet-badge ${badgeCls}&quot;&gt;${sp.trait}&lt;/div&gt;</span>
+          <span class="s1">&lt;div class=&quot;pet-price ${priceCls}&quot;&gt;${priceTag}&lt;/div&gt;</span>
+          <span class="s1">&lt;button class=&quot;btn ${owned?'btn-mint':'btn-primary'} choose-btn&quot; data-id=&quot;${sp.id}&quot; ${owned?'disabled':''}&gt;</span>
+            <span class="s1">${owned?'✅ Уже есть':'Выбрать'}</span>
+          <span class="s1">&lt;/button&gt;</span>
+        <span class="s1">&lt;/div&gt;</span>
+      <span class="s1">`;</span>
+    <span class="s1">}).join('');</span>
+
+    <span class="s1">grid.querySelectorAll('.pet-card').forEach(c =&gt; {</span>
+      <span class="s1">const sp = getSpecies(c.querySelector('.choose-btn').dataset.id);</span>
+      <span class="s1">c.addEventListener('mouseenter', () =&gt; Sounds.play(sp.sound));</span>
+    <span class="s1">});</span>
+    <span class="s1">grid.querySelectorAll('.choose-btn:not([disabled])').forEach(b =&gt; {</span>
+      <span class="s1">b.onclick = () =&gt; {</span>
+        <span class="s1">const sp = getSpecies(b.dataset.id);</span>
+        <span class="s1">Sounds.play(sp.sound);</span>
+        <span class="s1">if(!Auth.currentUser()){</span>
+          <span class="s1">if(confirm('Нужен аккаунт. Создать?')) go('register');</span>
+          <span class="s1">return;</span>
+        <span class="s1">}</span>
+        <span class="s1">const u = Auth.currentUser();</span>
+        <span class="s1">const has = u.pets &amp;&amp; u.pets.length &gt; 0;</span>
+        <span class="s1">if(sp.price &gt; 0 &amp;&amp; has){</span>
+          <span class="s1">pendingBuySpecies = sp;</span>
+          <span class="s1">document.getElementById('buyPetTitle').textContent = `Завести ${sp.defaultName}?`;</span>
+          <span class="s1">document.getElementById('buyPetImg').textContent = sp.emoji;</span>
+          <span class="s1">document.getElementById('buyPetPrice').textContent = `🪙 ${sp.price}`;</span>
+          <span class="s1">openModal('buyPetModal');</span>
+        <span class="s1">} else {</span>
+          <span class="s1">pendingSpecies = sp;</span>
+          <span class="s1">document.getElementById('modalTitle').textContent = `Выбрать ${sp.defaultName}?`;</span>
+          <span class="s1">document.getElementById('modalPetImg').textContent = sp.emoji;</span>
+          <span class="s1">openModal('chooseModal');</span>
+        <span class="s1">}</span>
+      <span class="s1">};</span>
+    <span class="s1">});</span>
+  <span class="s1">}</span>
+
+  <span class="s1">function openModal(id){ document.getElementById(id).classList.add('open'); }</span>
+  <span class="s1">function closeModal(id){ document.getElementById(id).classList.remove('open'); }</span>
+
+  <span class="s1">/* ---------- ОТЕЛЬ ---------- */</span>
+  <span class="s1">function renderHotel(){</span>
+    <span class="s1">const user = Auth.currentUser(); if(!user) return go('login');</span>
+    <span class="s1">const grid = document.getElementById('hotelGrid');</span>
+    <span class="s1">const pets = user.pets || [];</span>
+    <span class="s1">document.getElementById('hotelSub').textContent = pets.length === 0</span>
+      <span class="s1">? 'Заведи первого питомца на главной!'</span>
+      <span class="s1">: `У тебя ${pets.length} ${pets.length===1?'питомец':'питомцев'}. Кликни по комнате.`;</span>
+
+    <span class="s1">let html = pets.map(pet =&gt; {</span>
+      <span class="s1">const sp = getSpecies(pet.type);</span>
+      <span class="s1">const em = getEmotion(pet);</span>
+      <span class="s1">const isActive = pet.uid === user.activePetUid;</span>
+      <span class="s1">return `</span>
+        <span class="s1">&lt;div class=&quot;hotel-card ${isActive?'active-room':''}&quot; data-uid=&quot;${pet.uid}&quot;&gt;</span>
+          <span class="s1">${isActive?'&lt;div class=&quot;hotel-badge-active&quot;&gt;Активна&lt;/div&gt;':''}</span>
+          <span class="s1">&lt;div class=&quot;hotel-room-preview&quot;&gt;&lt;span&gt;${sp.emoji}&lt;/span&gt;&lt;/div&gt;</span>
+          <span class="s1">&lt;div class=&quot;hotel-body&quot;&gt;</span>
+            <span class="s1">&lt;h3&gt;${pet.name}&lt;/h3&gt;</span>
+            <span class="s1">&lt;div class=&quot;species&quot;&gt;${sp.name} · ${sp.trait}&lt;/div&gt;</span>
+            <span class="s1">&lt;div class=&quot;hotel-emotion&quot;&gt;${em.icon} ${em.label}&lt;/div&gt;</span>
+            <span class="s1">&lt;div class=&quot;hotel-stats&quot;&gt;&lt;span&gt;🍖 ${pet.hunger}%&lt;/span&gt;&lt;span&gt;😊 ${pet.mood}%&lt;/span&gt;&lt;/div&gt;</span>
+          <span class="s1">&lt;/div&gt;</span>
+        <span class="s1">&lt;/div&gt;</span>
+      <span class="s1">`;</span>
+    <span class="s1">}).join('');</span>
+
+    <span class="s1">const available = PET_SPECIES.filter(sp =&gt; !pets.some(p =&gt; p.type === sp.id));</span>
+    <span class="s1">if(available.length &gt; 0){</span>
+      <span class="s1">const next = available[0];</span>
+      <span class="s1">html += `</span>
+        <span class="s1">&lt;div class=&quot;hotel-empty&quot;&gt;</span>
+          <span class="s1">&lt;div&gt;</span>
+            <span class="s1">&lt;div class=&quot;hotel-empty-icon&quot;&gt;➕&lt;/div&gt;</span>
+            <span class="s1">&lt;h3&gt;Завести ${next.name.toLowerCase()}?&lt;/h3&gt;</span>
+            <span class="s1">&lt;p&gt;${next.emoji} ${next.defaultName} · 🪙 ${next.price}&lt;/p&gt;</span>
+            <span class="s1">&lt;button class=&quot;btn btn-primary&quot; id=&quot;buySlotBtn&quot; data-id=&quot;${next.id}&quot;&gt;Купить комнату&lt;/button&gt;</span>
+          <span class="s1">&lt;/div&gt;</span>
+        <span class="s1">&lt;/div&gt;</span>
+      <span class="s1">`;</span>
+    <span class="s1">}</span>
+    <span class="s1">grid.innerHTML = html;</span>
+
+    <span class="s1">grid.querySelectorAll('.hotel-card').forEach(c =&gt; {</span>
+      <span class="s1">c.onclick = () =&gt; {</span>
+        <span class="s1">Auth.updateUser(user.login, { activePetUid: c.dataset.uid });</span>
+        <span class="s1">Sounds.play('happy');</span>
+        <span class="s1">go('room');</span>
+      <span class="s1">};</span>
+    <span class="s1">});</span>
+    <span class="s1">const buyBtn = document.getElementById('buySlotBtn');</span>
+    <span class="s1">if(buyBtn){</span>
+      <span class="s1">buyBtn.onclick = () =&gt; {</span>
+        <span class="s1">const sp = getSpecies(buyBtn.dataset.id);</span>
+        <span class="s1">pendingBuySpecies = sp;</span>
+        <span class="s1">document.getElementById('buyPetTitle').textContent = `Завести ${sp.defaultName}?`;</span>
+        <span class="s1">document.getElementById('buyPetImg').textContent = sp.emoji;</span>
+        <span class="s1">document.getElementById('buyPetPrice').textContent = `🪙 ${sp.price}`;</span>
+        <span class="s1">openModal('buyPetModal');</span>
+      <span class="s1">};</span>
+    <span class="s1">}</span>
+  <span class="s1">}</span>
+
+  <span class="s1">/* ---------- КОМНАТА ---------- */</span>
+  <span class="s1">function renderRoom(){</span>
+    <span class="s1">const user = Auth.currentUser(); if(!user) return go('login');</span>
+    <span class="s1">if(!user.pets || user.pets.length === 0) return go('home');</span>
+    <span class="s1">let pet = user.pets.find(p =&gt; p.uid === user.activePetUid);</span>
+    <span class="s1">if(!pet){ pet = user.pets[0]; Auth.updateUser(user.login, { activePetUid: pet.uid }); }</span>
+    <span class="s1">const sp = getSpecies(pet.type);</span>
+
+    <span class="s1">maybeAddDiaryEntry(pet, sp);</span>
+
+    <span class="s1">const room = document.getElementById('roomStage');</span>
+    <span class="s1">const petBig = document.getElementById('petBig');</span>
+    <span class="s1">const petNameEl = document.getElementById('petName');</span>
+    <span class="s1">const bubble = document.getElementById('petBubble');</span>
+    <span class="s1">const emotionBadge = document.getElementById('emotionBadge');</span>
+
+    <span class="s1">function applyTimeClass(){</span>
+      <span class="s1">room.classList.remove('time-morning','time-day','time-evening','time-night');</span>
+      <span class="s1">room.classList.add(getTimeClass());</span>
+    <span class="s1">}</span>
+    <span class="s1">applyTimeClass();</span>
+
+    <span class="s1">petBig.textContent = sp.emoji;</span>
+    <span class="s1">petNameEl.textContent = pet.name;</span>
+
+    <span class="s1">petBig.style.left = sp.position === 'on-desk' ? '' : '30%';</span>
+    <span class="s1">petBig.style.right = sp.position === 'on-desk' ? '16%' : (sp.position === 'in-pool' ? '8%' : '');</span>
+    <span class="s1">petBig.style.bottom = sp.position === 'on-bed' ? '38%' : (sp.position === 'in-pool' ? '8%' : (sp.position === 'on-desk' ? '36%' : '30%'));</span>
+
+    <span class="s1">function updateClock(){</span>
+      <span class="s1">const el = document.getElementById('clockEl'); if(!el) return;</span>
+      <span class="s1">const d = new Date();</span>
+      <span class="s1">el.textContent = String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');</span>
+    <span class="s1">}</span>
+    <span class="s1">updateClock();</span>
+    <span class="s1">clockTimer = setInterval(updateClock, 30000);</span>
+
+    <span class="s1">function applyEmotion(){</span>
+      <span class="s1">const em = getEmotion(pet);</span>
+      <span class="s1">petBig.className = 'pet-big ' + em.cls;</span>
+      <span class="s1">emotionBadge.textContent = `${em.icon} ${em.label}`;</span>
+      <span class="s1">if(em.phrase &amp;&amp; !bubble.dataset.sticky) bubble.textContent = em.phrase;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">function render(){</span>
+      <span class="s1">document.getElementById('hungerBar').style.width = pet.hunger + '%';</span>
+      <span class="s1">document.getElementById('moodBar').style.width = pet.mood + '%';</span>
+      <span class="s1">document.getElementById('hungerVal').textContent = pet.hunger + '%';</span>
+      <span class="s1">document.getElementById('moodVal').textContent = pet.mood + '%';</span>
+      <span class="s1">const inv = user.inventory || {};</span>
+      <span class="s1">const items = Object.entries(inv).filter(([,v])=&gt;v&gt;0);</span>
+      <span class="s1">document.getElementById('inventory').innerHTML = items.length</span>
+        <span class="s1">? items.map(([k,v]) =&gt; { const it = getItem(k); return `&lt;div class=&quot;inv-item&quot;&gt;${it?it.emoji:'❓'} ${it?it.name:k} × ${v}&lt;/div&gt;`; }).join('')</span>
+        <span class="s1">: '&lt;div class=&quot;inv-item&quot;&gt;🛒 Пусто — в магазин!&lt;/div&gt;';</span>
+      <span class="s1">applyEmotion();</span>
+    <span class="s1">}</span>
+
+    <span class="s1">function say(text, sticky=false){</span>
+      <span class="s1">bubble.textContent = text;</span>
+      <span class="s1">bubble.dataset.sticky = sticky ? '1' : '';</span>
+      <span class="s1">if(!sticky) setTimeout(() =&gt; { bubble.dataset.sticky = ''; applyEmotion(); }, 3000);</span>
+    <span class="s1">}</span>
+
+    <span class="s1">function persist(){</span>
+      <span class="s1">const fresh = Auth.currentUser();</span>
+      <span class="s1">const idx = fresh.pets.findIndex(p =&gt; p.uid === pet.uid);</span>
+      <span class="s1">if(idx &lt; 0) return;</span>
+      <span class="s1">fresh.pets[idx] = { ...pet, lastUpdate: Date.now() };</span>
+      <span class="s1">Auth.updateUser(fresh.login, { pets: fresh.pets, inventory: fresh.inventory });</span>
+    <span class="s1">}</span>
+
+    <span class="s1">function feed(){</span>
+      <span class="s1">const fresh = Auth.currentUser();</span>
+      <span class="s1">const inv = fresh.inventory || {};</span>
+      <span class="s1">const pref = sp.favFood;</span>
+      <span class="s1">if(inv[pref] &gt; 0){</span>
+        <span class="s1">inv[pref]--; pet.hunger = Math.min(100, pet.hunger+30); pet.mood = Math.min(100, pet.mood+5);</span>
+        <span class="s1">Sounds.play('eat'); say(`${pet.name} обожает это! 💕`);</span>
+      <span class="s1">} else {</span>
+        <span class="s1">const alt = sp.food.find(f =&gt; f !== pref &amp;&amp; inv[f] &gt; 0);</span>
+        <span class="s1">if(alt){</span>
+          <span class="s1">inv[alt]--; pet.hunger = Math.min(100, pet.hunger+15);</span>
+          <span class="s1">Sounds.play('eat'); say(`${pet.name} покушал(а), но любит другое 🍽️`);</span>
+        <span class="s1">} else { say('Корм закончился. В магазин! 🛒'); return; }</span>
+      <span class="s1">}</span>
+      <span class="s1">const idx = fresh.pets.findIndex(p =&gt; p.uid === pet.uid);</span>
+      <span class="s1">fresh.pets[idx] = pet;</span>
+      <span class="s1">Auth.updateUser(fresh.login, { pets: fresh.pets, inventory: inv });</span>
+      <span class="s1">Auth.addStat('feeds');</span>
+      <span class="s1">render(); checkAchievements();</span>
+    <span class="s1">}</span>
+
+    <span class="s1">function playIt(){</span>
+      <span class="s1">pet.mood = Math.min(100, pet.mood+20);</span>
+      <span class="s1">pet.hunger = Math.max(0, pet.hunger-5);</span>
+      <span class="s1">Sounds.play(sp.sound); say(`${pet.name} прыгает от радости! 🎾`);</span>
+      <span class="s1">persist(); render();</span>
+    <span class="s1">}</span>
+    <span class="s1">function petPet(){</span>
+      <span class="s1">pet.mood = Math.min(100, pet.mood+10);</span>
+      <span class="s1">Sounds.play(sp.sound); say(`${pet.name} доволен 💖`);</span>
+      <span class="s1">persist(); render();</span>
+      <span class="s1">Auth.addStat('petsSum');</span>
+      <span class="s1">checkAchievements();</span>
+    <span class="s1">}</span>
+
+    <span class="s1">document.getElementById('feedBtn').onclick = feed;</span>
+    <span class="s1">document.getElementById('playBtn').onclick = playIt;</span>
+    <span class="s1">document.getElementById('petBtn').onclick = petPet;</span>
+    <span class="s1">document.getElementById('diaryBtn').onclick = () =&gt; openDiary(pet, sp);</span>
+    <span class="s1">petBig.onclick = () =&gt; { Sounds.play(sp.sound); say(`${pet.name}: ${sp.soundIcon.split(' ')[1]}!`); };</span>
+
+    <span class="s1">document.querySelector('.bed').onclick = () =&gt; say(`${pet.name} смотрит на кровать 🛏️`);</span>
+    <span class="s1">document.querySelector('.desk').onclick = () =&gt; say(`Стол с монитором 💻`);</span>
+    <span class="s1">document.querySelector('.window').onclick = () =&gt; say(`За окном ${getTimeClass().replace('time-','')} 🌆`);</span>
+
+    <span class="s1">// Ходьба</span>
+    <span class="s1">function startWalking(){</span>
+      <span class="s1">if(!sp.walkable) return;</span>
+      <span class="s1">const zones = sp.position === 'on-bed'</span>
+        <span class="s1">? { leftMin: 6, leftMax: 48, bottomMin: 34, bottomMax: 42 }</span>
+        <span class="s1">: sp.position === 'on-desk'</span>
+        <span class="s1">? { leftMin: 58, leftMax: 80, bottomMin: 32, bottomMax: 40 }</span>
+        <span class="s1">: sp.position === 'in-pool'</span>
+        <span class="s1">? { leftMin: 70, leftMax: 88, bottomMin: 6, bottomMax: 16 }</span>
+        <span class="s1">: { leftMin: 8, leftMax: 55, bottomMin: 22, bottomMax: 38 };</span>
+
+      <span class="s1">walkTimer = setInterval(() =&gt; {</span>
+        <span class="s1">if(Math.random() &lt; 0.4) return;</span>
+        <span class="s1">const l = zones.leftMin + Math.random()*(zones.leftMax - zones.leftMin);</span>
+        <span class="s1">const b = zones.bottomMin + Math.random()*(zones.bottomMax - zones.bottomMin);</span>
+        <span class="s1">petBig.classList.add('walking');</span>
+        <span class="s1">petBig.style.left = l + '%';</span>
+        <span class="s1">petBig.style.right = 'auto';</span>
+        <span class="s1">petBig.style.bottom = b + '%';</span>
+        <span class="s1">petNameEl.style.bottom = (b - 8) + '%';</span>
+        <span class="s1">setTimeout(() =&gt; petBig.classList.remove('walking'), 3000);</span>
+      <span class="s1">}, 8000);</span>
+    <span class="s1">}</span>
+    <span class="s1">startWalking();</span>
+
+    <span class="s1">emotionTimer = setInterval(applyEmotion, 5000);</span>
+    <span class="s1">render();</span>
+  <span class="s1">}</span>
+
+  <span class="s1">/* ---------- ДНЕВНИК ---------- */</span>
+  <span class="s1">function todayStr(){ const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }</span>
+
+  <span class="s1">function maybeAddDiaryEntry(pet, sp){</span>
+    <span class="s1">const today = todayStr();</span>
+    <span class="s1">if(pet.lastDiaryDate === today) return;</span>
+    <span class="s1">const diary = pet.diary || [];</span>
+    <span class="s1">const lines = sp.diary.lines;</span>
+    <span class="s1">const text = lines[Math.floor(Math.random()*lines.length)];</span>
+    <span class="s1">diary.unshift({ date: today, text, emoji: sp.diary.emoji });</span>
+    <span class="s1">const trimmed = diary.slice(0, 60);</span>
+    <span class="s1">const user = Auth.currentUser();</span>
+    <span class="s1">const idx = user.pets.findIndex(p =&gt; p.uid === pet.uid);</span>
+    <span class="s1">if(idx &gt;= 0){</span>
+      <span class="s1">user.pets[idx] = { ...pet, diary: trimmed, lastDiaryDate: today };</span>
+      <span class="s1">Auth.updateUser(user.login, { pets: user.pets });</span>
+    <span class="s1">}</span>
+  <span class="s1">}</span>
+
+  <span class="s1">function openDiary(pet, sp){</span>
+    <span class="s1">const fresh = Auth.currentUser().pets.find(p =&gt; p.uid === pet.uid);</span>
+    <span class="s1">const diary = fresh.diary || [];</span>
+    <span class="s1">document.getElementById('diaryTitle').textContent = `📔 Дневник ${fresh.name}`;</span>
+    <span class="s1">document.getElementById('diaryEmoji').textContent = sp.emoji;</span>
+    <span class="s1">const listEl = document.getElementById('diaryList');</span>
+    <span class="s1">if(diary.length === 0){</span>
+      <span class="s1">listEl.innerHTML = '&lt;div class=&quot;diary-empty&quot;&gt;Записей пока нет. Заходи каждый день — появятся новые!&lt;/div&gt;';</span>
+    <span class="s1">} else {</span>
+      <span class="s1">listEl.innerHTML = diary.map(e =&gt; `</span>
+        <span class="s1">&lt;div class=&quot;diary-entry&quot;&gt;</span>
+          <span class="s1">&lt;div class=&quot;diary-date&quot;&gt;${formatDate(e.date)} ${e.emoji}&lt;/div&gt;</span>
+          <span class="s1">&lt;div class=&quot;diary-text&quot;&gt;«${e.text}»&lt;/div&gt;</span>
+        <span class="s1">&lt;/div&gt;</span>
+      <span class="s1">`).join('');</span>
+    <span class="s1">}</span>
+    <span class="s1">openModal('diaryModal');</span>
+  <span class="s1">}</span>
+
+  <span class="s1">function formatDate(str){</span>
+    <span class="s1">const [y,m,d] = str.split('-');</span>
+    <span class="s1">const months = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];</span>
+    <span class="s1">return `${parseInt(d)} ${months[parseInt(m)-1]} ${y}`;</span>
+  <span class="s1">}</span>
+
+  <span class="s1">/* ---------- МАГАЗИН ---------- */</span>
+  <span class="s1">function renderShop(){</span>
+    <span class="s1">const user = Auth.currentUser(); if(!user) return go('login');</span>
+    <span class="s1">const grid = document.getElementById('shopGrid');</span>
+    <span class="s1">const hint = document.getElementById('shopHint');</span>
+    <span class="s1">hint.textContent = '';</span>
+    <span class="s1">grid.innerHTML = SHOP_ITEMS.map(it =&gt; `</span>
+      <span class="s1">&lt;div class=&quot;shop-item&quot;&gt;</span>
+        <span class="s1">&lt;div class=&quot;shop-item-icon&quot;&gt;${it.emoji}&lt;/div&gt;</span>
+        <span class="s1">&lt;h3&gt;${it.name}&lt;/h3&gt;</span>
+        <span class="s1">&lt;p class=&quot;desc&quot;&gt;${it.desc}&lt;/p&gt;</span>
+        <span class="s1">&lt;div class=&quot;price&quot;&gt;🪙 ${it.price}&lt;/div&gt;&lt;br&gt;</span>
+        <span class="s1">&lt;button class=&quot;btn btn-primary buy-btn&quot; data-id=&quot;${it.id}&quot; data-price=&quot;${it.price}&quot;&gt;Купить&lt;/button&gt;</span>
+      <span class="s1">&lt;/div&gt;</span>
+    <span class="s1">`).join('');</span>
+    <span class="s1">grid.querySelectorAll('.buy-btn').forEach(b =&gt; b.onclick = () =&gt; {</span>
+      <span class="s1">const fresh = Auth.currentUser();</span>
+      <span class="s1">const price = Number(b.dataset.price);</span>
+      <span class="s1">if(fresh.coins &lt; price){ hint.textContent = '💸 Не хватает монет!'; return; }</span>
+      <span class="s1">const inv = fresh.inventory || {};</span>
+      <span class="s1">inv[b.dataset.id] = (inv[b.dataset.id]||0) + 1;</span>
+      <span class="s1">Auth.updateUser(fresh.login, { coins: fresh.coins - price, inventory: inv });</span>
+      <span class="s1">Sounds.play('coin');</span>
+      <span class="s1">const it = getItem(b.dataset.id);</span>
+      <span class="s1">hint.textContent = `✅ Куплено: ${it.emoji} ${it.name}`;</span>
+      <span class="s1">const el = document.getElementById('coinsHeader'); if(el) el.textContent = fresh.coins - price;</span>
+      <span class="s1">checkAchievements();</span>
+    <span class="s1">});</span>
+  <span class="s1">}</span>
+
+  <span class="s1">/* ---------- ХАБ ИГР ---------- */</span>
+  <span class="s1">const GAMES = [</span>
+    <span class="s1">{ id:'mario',  name:'Марио-прыжок', emoji:'🍄', desc:'Прыгай, собирай монетки, беги к флагу', reward:'до 200 монет' },</span>
+    <span class="s1">{ id:'pacman', name:'Пак-пак',      emoji:'👻', desc:'Съешь точки и убеги от призраков', reward:'до 200 монет' },</span>
+    <span class="s1">{ id:'race',   name:'Гонки',        emoji:'🏎️', desc:'Обгоняй машины, уворачивайся', reward:'до 250 монет' }</span>
+  <span class="s1">];</span>
+  <span class="s1">function renderGamesHub(){</span>
+    <span class="s1">const grid = document.getElementById('gamesGrid');</span>
+    <span class="s1">grid.innerHTML = GAMES.map(g =&gt; `</span>
+      <span class="s1">&lt;div class=&quot;game-card&quot;&gt;</span>
+        <span class="s1">&lt;span class=&quot;game-emoji&quot;&gt;${g.emoji}&lt;/span&gt;</span>
+        <span class="s1">&lt;h3&gt;${g.name}&lt;/h3&gt;</span>
+        <span class="s1">&lt;p&gt;${g.desc}&lt;/p&gt;</span>
+        <span class="s1">&lt;div class=&quot;reward&quot;&gt;${g.reward}&lt;/div&gt;&lt;br&gt;</span>
+        <span class="s1">&lt;button class=&quot;btn btn-primary&quot; onclick=&quot;App.startGame('${g.id}')&quot;&gt;Играть&lt;/button&gt;</span>
+      <span class="s1">&lt;/div&gt;</span>
+    <span class="s1">`).join('');</span>
+  <span class="s1">}</span>
+
+  <span class="s1">/* ---------- ДОСТИЖЕНИЯ ЭКРАН ---------- */</span>
+  <span class="s1">function renderAchievements(){</span>
+    <span class="s1">const user = Auth.currentUser(); if(!user) return go('login');</span>
+    <span class="s1">const unlocked = user.achievements || [];</span>
+    <span class="s1">document.getElementById('achSub').textContent = `Открыто ${unlocked.length} из ${ACHIEVEMENTS.length}`;</span>
+    <span class="s1">document.getElementById('achGrid').innerHTML = ACHIEVEMENTS.map(a =&gt; {</span>
+      <span class="s1">const ok = unlocked.includes(a.id);</span>
+      <span class="s1">return `</span>
+        <span class="s1">&lt;div class=&quot;ach-card ${ok?'unlocked':'locked'}&quot;&gt;</span>
+          <span class="s1">&lt;div class=&quot;ach-icon&quot;&gt;${a.icon}&lt;/div&gt;</span>
+          <span class="s1">&lt;h3&gt;${a.name}&lt;/h3&gt;</span>
+          <span class="s1">&lt;p&gt;${a.desc}&lt;/p&gt;</span>
+          <span class="s1">&lt;div class=&quot;ach-status&quot;&gt;${ok?'✅ Получено':'🔒 Закрыто'}&lt;/div&gt;</span>
+        <span class="s1">&lt;/div&gt;</span>
+      <span class="s1">`;</span>
+    <span class="s1">}).join('');</span>
+  <span class="s1">}</span>
+
+  <span class="s1">/* ---------- ЗАПУСК ИГР ---------- */</span>
+  <span class="s1">function startGame(id){</span>
+    <span class="s1">Auth.addStat('gamesPlayed');</span>
+    <span class="s1">go('play');</span>
+    <span class="s1">const canvas = document.getElementById('playCanvas');</span>
+    <span class="s1">const ctx = canvas.getContext('2d');</span>
+    <span class="s1">const params = { canvas, ctx,</span>
+      <span class="s1">title: document.getElementById('playTitle'),</span>
+      <span class="s1">hud: document.getElementById('playHud'),</span>
+      <span class="s1">actions: document.getElementById('playActions'),</span>
+      <span class="s1">help: document.getElementById('playHelp'),</span>
+      <span class="s1">onFinish: (earned, scoreText) =&gt; {</span>
+        <span class="s1">if(earned &gt; 0) Auth.addCoins(earned);</span>
+        <span class="s1">Sounds.play('happy');</span>
+        <span class="s1">document.getElementById('playActions').innerHTML = `</span>
+          <span class="s1">&lt;div style=&quot;font-weight:800;font-size:20px;&quot;&gt;🎉 ${scoreText} Заработано: 🪙 ${earned}&lt;/div&gt;</span>
+          <span class="s1">&lt;button class=&quot;btn btn-primary&quot; onclick=&quot;App.startGame('${id}')&quot;&gt;Ещё раз&lt;/button&gt;</span>
+          <span class="s1">&lt;button class=&quot;btn btn-soft&quot; onclick=&quot;App.go('minigames')&quot;&gt;К играм&lt;/button&gt;</span>
+        <span class="s1">`;</span>
+        <span class="s1">checkAchievements();</span>
+      <span class="s1">}</span>
+    <span class="s1">};</span>
+    <span class="s1">if(id === 'mario')  currentGame = MarioGame(params);</span>
+    <span class="s1">if(id === 'pacman') currentGame = PacmanGame(params);</span>
+    <span class="s1">if(id === 'race')   currentGame = RaceGame(params);</span>
+    <span class="s1">if(currentGame) currentGame.start();</span>
+  <span class="s1">}</span>
+
+  <span class="s1">/* ============================================================</span>
+     <span class="s1">МАРИО</span>
+     <span class="s1">============================================================ */</span>
+  <span class="s1">function MarioGame({ canvas, ctx, title, hud, actions, help, onFinish }){</span>
+    <span class="s1">const W = canvas.width, H = canvas.height;</span>
+    <span class="s1">const GRAVITY = .7, JUMP = -13, SPEED = 4.2;</span>
+    <span class="s1">let player, platforms, coins, flag, keys, state, cameraX, done, tick;</span>
+    <span class="s1">function reset(){</span>
+      <span class="s1">player = { x:60, y:H-120, w:34, h:44, vx:0, vy:0, onGround:false, facing:1 };</span>
+      <span class="s1">platforms = [</span>
+        <span class="s1">{x:0,y:H-40,w:600,h:40},{x:640,y:H-80,w:140,h:20},{x:830,y:H-140,w:140,h:20},</span>
+        <span class="s1">{x:1020,y:H-200,w:140,h:20},{x:1210,y:H-40,w:800,h:40},</span>
+        <span class="s1">{x:1560,y:H-120,w:120,h:20},{x:1740,y:H-200,w:120,h:20},{x:1920,y:H-280,w:120,h:20}</span>
+      <span class="s1">];</span>
+      <span class="s1">coins = [];</span>
+      <span class="s1">[700,760,820,880,900,960,1020,1300,1360,1650,1850,1980].forEach((x,i) =&gt; coins.push({ x, y:H-160-(i%4)*60, r:11, got:false }));</span>
+      <span class="s1">flag = { x:2120, y:H-160, w:40, h:160 };</span>
+      <span class="s1">keys = {}; cameraX = 0; done = false; tick = 0;</span>
+      <span class="s1">document.onkeydown = e =&gt; { keys[e.key]=true; if([' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) e.preventDefault(); };</span>
+      <span class="s1">document.onkeyup = e =&gt; { keys[e.key]=false; };</span>
+    <span class="s1">}</span>
+    <span class="s1">function update(){</span>
+      <span class="s1">if(done) return;</span>
+      <span class="s1">if(keys['ArrowLeft']||keys['a']||keys['A']) { player.vx=-SPEED; player.facing=-1; }</span>
+      <span class="s1">else if(keys['ArrowRight']||keys['d']||keys['D']) { player.vx=SPEED; player.facing=1; }</span>
+      <span class="s1">else player.vx=0;</span>
+      <span class="s1">if((keys['ArrowUp']||keys['w']||keys['W']||keys[' ']) &amp;&amp; player.onGround){ player.vy=JUMP; player.onGround=false; }</span>
+      <span class="s1">player.x += player.vx; player.vy += GRAVITY; player.y += player.vy; player.onGround=false;</span>
+      <span class="s1">for(const p of platforms){</span>
+        <span class="s1">if(player.x+player.w&gt;p.x &amp;&amp; player.x&lt;p.x+p.w &amp;&amp; player.y+player.h&gt;p.y &amp;&amp; player.y+player.h&lt;p.y+p.h+24 &amp;&amp; player.vy&gt;=0){</span>
+          <span class="s1">player.y=p.y-player.h; player.vy=0; player.onGround=true;</span>
+        <span class="s1">}</span>
+      <span class="s1">}</span>
+      <span class="s1">if(player.y &gt; H+200) reset();</span>
+      <span class="s1">for(const c of coins){</span>
+        <span class="s1">if(!c.got &amp;&amp; Math.hypot((player.x+player.w/2)-c.x,(player.y+player.h/2)-c.y)&lt;26){ c.got=true; Sounds.play('coin'); }</span>
+      <span class="s1">}</span>
+      <span class="s1">if(player.x+player.w&gt;flag.x &amp;&amp; player.y+player.h&gt;flag.y){</span>
+        <span class="s1">done = true;</span>
+        <span class="s1">const got = coins.filter(c=&gt;c.got).length;</span>
+        <span class="s1">Auth.addStat('marioCoins', got);</span>
+        <span class="s1">setTimeout(() =&gt; onFinish(got*10+50, `Собрано монет: ${got}.`), 200);</span>
+      <span class="s1">}</span>
+      <span class="s1">cameraX = Math.max(0, Math.min(player.x - W/3, 2300-W));</span>
+      <span class="s1">tick++;</span>
+      <span class="s1">const got = coins.filter(c=&gt;c.got).length;</span>
+      <span class="s1">hud.innerHTML = `&lt;div&gt;🪙 &lt;span&gt;${got}&lt;/span&gt;&lt;/div&gt;&lt;div&gt;🏁 До финиша: &lt;span&gt;${Math.max(0,Math.round((flag.x-player.x)/20))}&lt;/span&gt; м&lt;/div&gt;`;</span>
+    <span class="s1">}</span>
+    <span class="s1">function draw(){</span>
+      <span class="s1">ctx.clearRect(0,0,W,H);</span>
+      <span class="s1">const sky = ctx.createLinearGradient(0,0,0,H);</span>
+      <span class="s1">sky.addColorStop(0,'#8ecdf3'); sky.addColorStop(.7,'#c8e9ff'); sky.addColorStop(1,'#f5e6c8');</span>
+      <span class="s1">ctx.fillStyle=sky; ctx.fillRect(0,0,W,H);</span>
+      <span class="s1">ctx.save(); ctx.translate(-cameraX,0);</span>
+      <span class="s1">platforms.forEach(p =&gt; { ctx.fillStyle='#7ac74f'; ctx.fillRect(p.x,p.y,p.w,10); ctx.fillStyle='#8a5a2b'; ctx.fillRect(p.x,p.y+10,p.w,p.h-10); });</span>
+      <span class="s1">coins.forEach(c =&gt; { if(c.got) return; ctx.fillStyle='#ffd93d'; ctx.beginPath(); ctx.arc(c.x,c.y,c.r,0,7); ctx.fill(); ctx.strokeStyle='#d4a017'; ctx.lineWidth=2; ctx.stroke(); });</span>
+      <span class="s1">ctx.fillStyle='#6b6b6b'; ctx.fillRect(flag.x,flag.y,6,flag.h);</span>
+      <span class="s1">ctx.fillStyle='#2ecc71'; ctx.beginPath(); ctx.moveTo(flag.x+6,flag.y+6); ctx.lineTo(flag.x+50,flag.y+20); ctx.lineTo(flag.x+6,flag.y+40); ctx.fill();</span>
+      <span class="s1">const px=player.x, py=player.y, pw=player.w, ph=player.h;</span>
+      <span class="s1">ctx.fillStyle='#5a2d0c'; ctx.fillRect(px,py+ph-6,pw,6);</span>
+      <span class="s1">ctx.fillStyle='#2d6cdf'; ctx.fillRect(px+3,py+ph-20,pw-6,14);</span>
+      <span class="s1">ctx.fillStyle='#e63946'; ctx.fillRect(px+2,py+14,pw-4,ph-32);</span>
+      <span class="s1">ctx.fillStyle='#ffd7b5'; ctx.fillRect(px+4,py+2,pw-8,14);</span>
+      <span class="s1">ctx.fillStyle='#e63946'; ctx.fillRect(px+2,py-2,pw-4,8);</span>
+      <span class="s1">ctx.fillRect(px+(player.facing&gt;0?pw-6:-6),py+2,12,4);</span>
+      <span class="s1">ctx.fillStyle='#1a1a1a'; ctx.fillRect(px+(player.facing&gt;0?pw-14:9),py+7,3,3);</span>
+      <span class="s1">ctx.restore();</span>
+    <span class="s1">}</span>
+    <span class="s1">function loop(){ if(!state) return; update(); draw(); requestAnimationFrame(loop); }</span>
+    <span class="s1">return {</span>
+      <span class="s1">start(){ title.textContent='🍄 Марио-прыжок'; help.textContent='← → двигаться, ↑/Пробел — прыжок. Собери монетки и добеги до флага!'; actions.innerHTML=`&lt;button class=&quot;btn btn-soft&quot; onclick=&quot;App.go('minigames')&quot;&gt;← Назад&lt;/button&gt;`; reset(); state=true; loop(); },</span>
+      <span class="s1">stop(){ state=false; document.onkeydown=null; document.onkeyup=null; }</span>
+    <span class="s1">};</span>
+  <span class="s1">}</span>
+
+  <span class="s1">/* ============================================================</span>
+     <span class="s1">ПАК-ПАК</span>
+     <span class="s1">============================================================ */</span>
+  <span class="s1">function PacmanGame({ canvas, ctx, title, hud, actions, help, onFinish }){</span>
+    <span class="s1">const TILE=28, COLS=21, ROWS=17;</span>
+    <span class="s1">const W=COLS*TILE, H=ROWS*TILE;</span>
+    <span class="s1">canvas.width=W; canvas.height=H;</span>
+    <span class="s1">const MAP=[</span>
+      <span class="s1">&quot;#####################&quot;,&quot;#.........#.........#&quot;,&quot;#.###.###.#.###.###.#&quot;,&quot;#.#...........#.....#&quot;,</span>
+      <span class="s1">&quot;#.#.###.#####.###.#.#&quot;,&quot;#.....#...#...#.....#&quot;,&quot;#####.#.#.#.#.#.#####&quot;,&quot;    #.#.#.#.#.#.#    &quot;,</span>
+      <span class="s1">&quot;#####.#.#.#.#.#.#####&quot;,&quot;#.........#.........#&quot;,&quot;#.###.###.#.###.###.#&quot;,&quot;#.#...............#.#&quot;,</span>
+      <span class="s1">&quot;#.#.#####.#.#####.#.#&quot;,&quot;#.....#...#...#.....#&quot;,&quot;#.###.#.#####.#.###.#&quot;,&quot;#.........#.........#&quot;,&quot;#####################&quot;</span>
+    <span class="s1">];</span>
+    <span class="s1">let pac, ghosts, dots, totalDots, eaten, state, tick, keys, score, timeLeft;</span>
+    <span class="s1">function reset(){</span>
+      <span class="s1">pac = { x:9.5*TILE, y:12.5*TILE, r:TILE*0.4, dx:-1, dy:0, nextDx:-1, nextDy:0, speed:2.1 };</span>
+      <span class="s1">ghosts = [</span>
+        <span class="s1">{ x:9.5*TILE,y:6.5*TILE,dx:0,dy:-1,color:'#ff4d4d',speed:1.5 },</span>
+        <span class="s1">{ x:8.5*TILE,y:6.5*TILE,dx:0,dy:-1,color:'#ff9ecb',speed:1.4 },</span>
+        <span class="s1">{ x:10.5*TILE,y:6.5*TILE,dx:0,dy:-1,color:'#4dd2ff',speed:1.4 }</span>
+      <span class="s1">];</span>
+      <span class="s1">dots=[];</span>
+      <span class="s1">for(let r=0;r&lt;ROWS;r++) for(let c=0;c&lt;COLS;c++) if(MAP[r][c]==='.') dots.push({c,r,got:false});</span>
+      <span class="s1">totalDots=dots.length; eaten=0; score=0; timeLeft=60; state=true; tick=0; keys={};</span>
+      <span class="s1">document.onkeydown = e =&gt; { keys[e.key]=true; if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) e.preventDefault(); };</span>
+      <span class="s1">document.onkeyup = e =&gt; { keys[e.key]=false; };</span>
+    <span class="s1">}</span>
+    <span class="s1">function isWall(px,py){ const c=Math.floor(px/TILE), r=Math.floor(py/TILE); if(r&lt;0||r&gt;=ROWS||c&lt;0||c&gt;=COLS) return true; return MAP[r][c]==='#'; }</span>
+    <span class="s1">function canMove(x,y){ const r=TILE*0.35; return !isWall(x-r,y-r)&amp;&amp;!isWall(x+r,y-r)&amp;&amp;!isWall(x-r,y+r)&amp;&amp;!isWall(x+r,y+r); }</span>
+    <span class="s1">function movePac(){</span>
+      <span class="s1">if(keys['ArrowLeft']||keys['a']||keys['A']) { pac.nextDx=-1; pac.nextDy=0; }</span>
+      <span class="s1">if(keys['ArrowRight']||keys['d']||keys['D']){ pac.nextDx=1; pac.nextDy=0; }</span>
+      <span class="s1">if(keys['ArrowUp']||keys['w']||keys['W']){ pac.nextDx=0; pac.nextDy=-1; }</span>
+      <span class="s1">if(keys['ArrowDown']||keys['s']||keys['S']){ pac.nextDx=0; pac.nextDy=1; }</span>
+      <span class="s1">const nx0 = pac.x + pac.nextDx*pac.speed, ny0 = pac.y + pac.nextDy*pac.speed;</span>
+      <span class="s1">if((pac.nextDx!==0||pac.nextDy!==0) &amp;&amp; canMove(nx0,ny0)){ pac.dx=pac.nextDx; pac.dy=pac.nextDy; }</span>
+      <span class="s1">const nx = pac.x + pac.dx*pac.speed, ny = pac.y + pac.dy*pac.speed;</span>
+      <span class="s1">if(canMove(nx,ny)){ pac.x=nx; pac.y=ny; }</span>
+    <span class="s1">}</span>
+    <span class="s1">function eatDots(){</span>
+      <span class="s1">dots.forEach(d =&gt; {</span>
+        <span class="s1">if(d.got) return;</span>
+        <span class="s1">const dx=(d.c+.5)*TILE-pac.x, dy=(d.r+.5)*TILE-pac.y;</span>
+        <span class="s1">if(Math.hypot(dx,dy)&lt;pac.r+4){</span>
+          <span class="s1">d.got=true; eaten++; score+=10; Sounds.play('coin');</span>
+          <span class="s1">if(eaten===totalDots){ Auth.addStat('pacmanWins'); done(`Победа! 🎉`, Math.min(200, score/2 + timeLeft*2)); }</span>
+        <span class="s1">}</span>
+      <span class="s1">});</span>
+    <span class="s1">}</span>
+    <span class="s1">function moveGhosts(){</span>
+      <span class="s1">ghosts.forEach(g =&gt; {</span>
+        <span class="s1">const dirs=[{dx:1,dy:0},{dx:-1,dy:0},{dx:0,dy:1},{dx:0,dy:-1}];</span>
+        <span class="s1">dirs.sort((a,b) =&gt; {</span>
+          <span class="s1">const ax=g.x+a.dx*TILE, ay=g.y+a.dy*TILE;</span>
+          <span class="s1">const bx=g.x+b.dx*TILE, by=g.y+b.dy*TILE;</span>
+          <span class="s1">return Math.hypot(ax-pac.x,ay-pac.y)-Math.hypot(bx-pac.x,by-pac.y);</span>
+        <span class="s1">});</span>
+        <span class="s1">const ok = dirs.filter(d =&gt; canMove(g.x+d.dx*g.speed, g.y+d.dy*g.speed) &amp;&amp; !(d.dx===-g.dx &amp;&amp; d.dy===-g.dy));</span>
+        <span class="s1">const choose = ok[Math.random()&lt;0.85?0:Math.floor(Math.random()*ok.length)] || dirs[0];</span>
+        <span class="s1">const nx=g.x+choose.dx*g.speed, ny=g.y+choose.dy*g.speed;</span>
+        <span class="s1">if(canMove(nx,ny)){ g.x=nx; g.y=ny; g.dx=choose.dx; g.dy=choose.dy; }</span>
+        <span class="s1">if(Math.hypot(g.x-pac.x,g.y-pac.y)&lt;TILE*0.7){ done('Поймали! 💀', 0); }</span>
+      <span class="s1">});</span>
+    <span class="s1">}</span>
+    <span class="s1">function done(text, earned){</span>
+      <span class="s1">if(!state) return; state=false; document.onkeydown=null; document.onkeyup=null;</span>
+      <span class="s1">onFinish(earned, text);</span>
+    <span class="s1">}</span>
+    <span class="s1">function update(){</span>
+      <span class="s1">if(!state) return; tick++;</span>
+      <span class="s1">if(tick%60===0){ timeLeft--; if(timeLeft&lt;=0){ done('Время вышло! ⏰', 0); return; } }</span>
+      <span class="s1">movePac(); eatDots(); moveGhosts();</span>
+      <span class="s1">hud.innerHTML = `&lt;div&gt;🎯 Очки: ${score}&lt;/div&gt;&lt;div&gt;⚪ Точки: ${eaten}/${totalDots}&lt;/div&gt;&lt;div&gt;⏱ ${timeLeft} сек&lt;/div&gt;`;</span>
+    <span class="s1">}</span>
+    <span class="s1">function draw(){</span>
+      <span class="s1">ctx.clearRect(0,0,W,H);</span>
+      <span class="s1">ctx.fillStyle='#0a0a1a'; ctx.fillRect(0,0,W,H);</span>
+      <span class="s1">for(let r=0;r&lt;ROWS;r++) for(let c=0;c&lt;COLS;c++){</span>
+        <span class="s1">if(MAP[r][c]==='#'){</span>
+          <span class="s1">ctx.fillStyle='#1a1a5e'; ctx.fillRect(c*TILE,r*TILE,TILE,TILE);</span>
+          <span class="s1">ctx.strokeStyle='#4a4aff'; ctx.lineWidth=2; ctx.strokeRect(c*TILE+2,r*TILE+2,TILE-4,TILE-4);</span>
+        <span class="s1">}</span>
+      <span class="s1">}</span>
+      <span class="s1">dots.forEach(d =&gt; { if(d.got) return; ctx.fillStyle='#ffe066'; ctx.beginPath(); ctx.arc((d.c+.5)*TILE,(d.r+.5)*TILE,3,0,7); ctx.fill(); });</span>
+      <span class="s1">ghosts.forEach(g =&gt; {</span>
+        <span class="s1">ctx.fillStyle=g.color;</span>
+        <span class="s1">ctx.beginPath(); ctx.arc(g.x,g.y,TILE*0.4,Math.PI,0);</span>
+        <span class="s1">ctx.lineTo(g.x+TILE*0.4,g.y+TILE*0.4); ctx.lineTo(g.x+TILE*0.2,g.y+TILE*0.25); ctx.lineTo(g.x,g.y+TILE*0.4);</span>
+        <span class="s1">ctx.lineTo(g.x-TILE*0.2,g.y+TILE*0.25); ctx.lineTo(g.x-TILE*0.4,g.y+TILE*0.4);</span>
+        <span class="s1">ctx.fill();</span>
+        <span class="s1">ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(g.x-5,g.y-4,4,0,7); ctx.arc(g.x+5,g.y-4,4,0,7); ctx.fill();</span>
+        <span class="s1">ctx.fillStyle='#1a1a1a'; ctx.beginPath(); ctx.arc(g.x-5+g.dx*2,g.y-4+g.dy*2,2,0,7); ctx.arc(g.x+5+g.dx*2,g.y-4+g.dy*2,2,0,7); ctx.fill();</span>
+      <span class="s1">});</span>
+      <span class="s1">const mouth=Math.abs(Math.sin(tick*0.15))*0.5;</span>
+      <span class="s1">const angle=Math.atan2(pac.dy,pac.dx);</span>
+      <span class="s1">ctx.fillStyle='#ffe600'; ctx.beginPath(); ctx.moveTo(pac.x,pac.y);</span>
+      <span class="s1">ctx.arc(pac.x,pac.y,pac.r,angle+mouth,angle-mouth+Math.PI*2); ctx.closePath(); ctx.fill();</span>
+      <span class="s1">ctx.fillStyle='#1a1a1a';</span>
+      <span class="s1">const ex=pac.x+Math.cos(angle-Math.PI/2)*pac.r*0.4, ey=pac.y+Math.sin(angle-Math.PI/2)*pac.r*0.4;</span>
+      <span class="s1">ctx.beginPath(); ctx.arc(ex,ey,2.5,0,7); ctx.fill();</span>
+    <span class="s1">}</span>
+    <span class="s1">function loop(){ if(!state) return; update(); draw(); requestAnimationFrame(loop); }</span>
+    <span class="s1">return {</span>
+      <span class="s1">start(){ title.textContent='👻 Пак-пак'; help.textContent='← → ↑ ↓ или WASD. Съешь все точки и не дай призракам поймать!'; actions.innerHTML=`&lt;button class=&quot;btn btn-soft&quot; onclick=&quot;App.go('minigames')&quot;&gt;← Назад&lt;/button&gt;`; reset(); loop(); },</span>
+      <span class="s1">stop(){ state=false; document.onkeydown=null; document.onkeyup=null; }</span>
+    <span class="s1">};</span>
+  <span class="s1">}</span>
+
+  <span class="s1">/* ============================================================</span>
+     <span class="s1">ГОНКИ</span>
+     <span class="s1">============================================================ */</span>
+  <span class="s1">function RaceGame({ canvas, ctx, title, hud, actions, help, onFinish }){</span>
+    <span class="s1">const W=canvas.width, H=canvas.height;</span>
+    <span class="s1">const ROAD_LEFT=W*0.15, ROAD_RIGHT=W*0.85;</span>
+    <span class="s1">let player, obstacles, bonuses, speed, distance, keys, state, tick, gameTime;</span>
+    <span class="s1">function reset(){</span>
+      <span class="s1">player={ x:W/2, y:H-90, w:46, h:80 };</span>
+      <span class="s1">obstacles=[]; bonuses=[]; speed=3.2; distance=0; tick=0; gameTime=45; keys={}; state=true;</span>
+      <span class="s1">document.onkeydown = e =&gt; { keys[e.key]=true; if(['ArrowLeft','ArrowRight',' '].includes(e.key)) e.preventDefault(); };</span>
+      <span class="s1">document.onkeyup = e =&gt; { keys[e.key]=false; };</span>
+      <span class="s1">actions.innerHTML = `</span>
+        <span class="s1">&lt;button class=&quot;btn btn-soft&quot; id=&quot;leftBtn&quot;&gt;◀&lt;/button&gt;</span>
+        <span class="s1">&lt;button class=&quot;btn btn-soft&quot; id=&quot;rightBtn&quot;&gt;▶&lt;/button&gt;</span>
+        <span class="s1">&lt;button class=&quot;btn btn-primary&quot; id=&quot;boostBtn&quot;&gt;⚡&lt;/button&gt;</span>
+        <span class="s1">&lt;button class=&quot;btn btn-soft&quot; onclick=&quot;App.go('minigames')&quot;&gt;← Назад&lt;/button&gt;</span>
+      <span class="s1">`;</span>
+      <span class="s1">const press = (key, el) =&gt; { el.onpointerdown = () =&gt; keys[key]=true; el.onpointerup = () =&gt; keys[key]=false; el.onpointerleave = () =&gt; keys[key]=false; };</span>
+      <span class="s1">press('ArrowLeft', document.getElementById('leftBtn'));</span>
+      <span class="s1">press('ArrowRight', document.getElementById('rightBtn'));</span>
+      <span class="s1">press(' ', document.getElementById('boostBtn'));</span>
+    <span class="s1">}</span>
+    <span class="s1">function update(){</span>
+      <span class="s1">if(!state) return; tick++;</span>
+      <span class="s1">if(tick%60===0){ gameTime--; if(gameTime&lt;=0){ finish(distance); return; } }</span>
+      <span class="s1">const ms = 6;</span>
+      <span class="s1">if(keys['ArrowLeft']||keys['a']||keys['A']) player.x-=ms;</span>
+      <span class="s1">if(keys['ArrowRight']||keys['d']||keys['D']) player.x+=ms;</span>
+      <span class="s1">player.x = Math.max(ROAD_LEFT+player.w/2, Math.min(ROAD_RIGHT-player.w/2, player.x));</span>
+      <span class="s1">const boosting = keys[' ']||keys['Shift'];</span>
+      <span class="s1">const base = 3.2 + distance/1500;</span>
+      <span class="s1">speed = boosting ? base*1.7 : base;</span>
+      <span class="s1">distance += speed;</span>
+      <span class="s1">if(tick % Math.max(18, 40-Math.floor(distance/200)) === 0){</span>
+        <span class="s1">const type = Math.random()&lt;0.7 ? 'cone' : 'car';</span>
+        <span class="s1">obstacles.push({ x:ROAD_LEFT+Math.random()*(ROAD_RIGHT-ROAD_LEFT-50)+25, y:-60, w:46, h:type==='car'?80:40, type,</span>
+          <span class="s1">color:type==='car'?['#e63946','#4d9eff','#2ecc71','#f39c12'][Math.floor(Math.random()*4)]:'#ff8c42' });</span>
+      <span class="s1">}</span>
+      <span class="s1">if(tick%90===0) bonuses.push({ x:ROAD_LEFT+Math.random()*(ROAD_RIGHT-ROAD_LEFT-30)+15, y:-30, r:14, got:false });</span>
+      <span class="s1">obstacles.forEach(o =&gt; o.y += speed*1.4);</span>
+      <span class="s1">obstacles = obstacles.filter(o =&gt; o.y &lt; H+100);</span>
+      <span class="s1">bonuses.forEach(b =&gt; b.y += speed*1.4);</span>
+      <span class="s1">bonuses = bonuses.filter(b =&gt; b.y &lt; H+50);</span>
+      <span class="s1">for(const o of obstacles){</span>
+        <span class="s1">if(player.x+player.w/2&gt;o.x-o.w/2 &amp;&amp; player.x-player.w/2&lt;o.x+o.w/2 &amp;&amp; player.y+player.h/2&gt;o.y-o.h/2 &amp;&amp; player.y-player.h/2&lt;o.y+o.h/2){ finish(distance, true); return; }</span>
+      <span class="s1">}</span>
+      <span class="s1">bonuses.forEach(b =&gt; { if(!b.got &amp;&amp; Math.hypot(player.x-b.x,player.y-b.y)&lt;30){ b.got=true; distance+=200; Sounds.play('coin'); } });</span>
+      <span class="s1">hud.innerHTML = `&lt;div&gt;🛣️ ${Math.floor(distance/10)} м&lt;/div&gt;&lt;div&gt;⏱ ${gameTime} сек&lt;/div&gt;&lt;div&gt;⚡ ${Math.round(speed*10)}&lt;/div&gt;`;</span>
+    <span class="s1">}</span>
+    <span class="s1">function drawRoad(){</span>
+      <span class="s1">ctx.fillStyle='#2e7d32'; ctx.fillRect(0,0,ROAD_LEFT,H); ctx.fillRect(ROAD_RIGHT,0,W,H);</span>
+      <span class="s1">ctx.fillStyle='#3a3a3a'; ctx.fillRect(ROAD_LEFT,0,ROAD_RIGHT-ROAD_LEFT,H);</span>
+      <span class="s1">ctx.fillStyle='#f5e6a3';</span>
+      <span class="s1">const dash=60, offset=(distance*1.4)%(dash*2);</span>
+      <span class="s1">for(let y=-dash*2+offset; y&lt;H; y+=dash*2){</span>
+        <span class="s1">ctx.fillRect(W/2-3,y,6,dash); ctx.fillRect(ROAD_LEFT+10,y,4,dash); ctx.fillRect(ROAD_RIGHT-14,y,4,dash);</span>
+      <span class="s1">}</span>
+    <span class="s1">}</span>
+    <span class="s1">function drawPlayerCar(){</span>
+      <span class="s1">const x=player.x, y=player.y, w=player.w, h=player.h;</span>
+      <span class="s1">ctx.fillStyle='rgba(0,0,0,.35)'; ctx.beginPath(); ctx.ellipse(x,y+h/2,w/2*1.1,h/3,0,0,7); ctx.fill();</span>
+      <span class="s1">ctx.fillStyle='#e63946'; ctx.beginPath(); ctx.roundRect(x-w/2,y-h/2,w,h,10); ctx.fill();</span>
+      <span class="s1">ctx.fillStyle='#b3202c'; ctx.beginPath(); ctx.roundRect(x-w/2+4,y-h/2+6,w-8,h*0.35,6); ctx.fill();</span>
+      <span class="s1">ctx.fillStyle='#a5d8ff'; ctx.beginPath(); ctx.roundRect(x-w/2+6,y-h/4,w-12,h*0.28,4); ctx.fill();</span>
+      <span class="s1">ctx.fillStyle='#111';</span>
+      <span class="s1">ctx.fillRect(x-w/2-4,y-h/3,8,16); ctx.fillRect(x+w/2-4,y-h/3,8,16);</span>
+      <span class="s1">ctx.fillRect(x-w/2-4,y+h/3-16,8,16); ctx.fillRect(x+w/2-4,y+h/3-16,8,16);</span>
+      <span class="s1">ctx.fillStyle='#fff8b0'; ctx.beginPath(); ctx.arc(x-w/4,y-h/2+4,4,0,7); ctx.arc(x+w/4,y-h/2+4,4,0,7); ctx.fill();</span>
+    <span class="s1">}</span>
+    <span class="s1">function drawObstacles(){</span>
+      <span class="s1">obstacles.forEach(o =&gt; {</span>
+        <span class="s1">if(o.type==='cone'){</span>
+          <span class="s1">ctx.fillStyle='#ff8c42'; ctx.beginPath(); ctx.moveTo(o.x,o.y-o.h/2); ctx.lineTo(o.x-o.w/2,o.y+o.h/2); ctx.lineTo(o.x+o.w/2,o.y+o.h/2); ctx.closePath(); ctx.fill();</span>
+          <span class="s1">ctx.fillStyle='#fff'; ctx.fillRect(o.x-6,o.y-2,12,6);</span>
+        <span class="s1">} else {</span>
+          <span class="s1">ctx.fillStyle=o.color; ctx.beginPath(); ctx.roundRect(o.x-o.w/2,o.y-o.h/2,o.w,o.h,8); ctx.fill();</span>
+          <span class="s1">ctx.fillStyle='rgba(255,255,255,.4)'; ctx.beginPath(); ctx.roundRect(o.x-o.w/2+5,o.y-o.h/3,o.w-10,o.h*0.3,4); ctx.fill();</span>
+        <span class="s1">}</span>
+      <span class="s1">});</span>
+    <span class="s1">}</span>
+    <span class="s1">function drawBonuses(){</span>
+      <span class="s1">bonuses.forEach(b =&gt; { if(b.got) return; ctx.fillStyle='#ffd93d'; ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,7); ctx.fill(); ctx.strokeStyle='#d4a017'; ctx.lineWidth=2; ctx.stroke(); });</span>
+    <span class="s1">}</span>
+    <span class="s1">function draw(){ ctx.clearRect(0,0,W,H); drawRoad(); drawObstacles(); drawBonuses(); drawPlayerCar(); }</span>
+    <span class="s1">function finish(dist, crash){</span>
+      <span class="s1">if(!state) return; state=false;</span>
+      <span class="s1">document.onkeydown=null; document.onkeyup=null;</span>
+      <span class="s1">const earned = crash ? Math.floor(dist/30) : Math.min(250, Math.floor(dist/15));</span>
+      <span class="s1">if(!crash) Auth.addStat('raceWins', earned);</span>
+      <span class="s1">onFinish(earned, crash ? `💥 Авария! Дистанция: ${Math.floor(dist/10)} м.` : `Финиш! Дистанция: ${Math.floor(dist/10)} м.`);</span>
+    <span class="s1">}</span>
+    <span class="s1">function loop(){ if(!state) return; update(); draw(); requestAnimationFrame(loop); }</span>
+    <span class="s1">return {</span>
+      <span class="s1">start(){ title.textContent='🏎️ Гонки'; help.textContent='← → двигаться, Пробел — ускорение. Уворачивайся!'; reset(); loop(); },</span>
+      <span class="s1">stop(){ state=false; document.onkeydown=null; document.onkeyup=null; }</span>
+    <span class="s1">};</span>
+  <span class="s1">}</span>
+
+  <span class="s1">/* ---------- ФОРМЫ ---------- */</span>
+  <span class="s1">function initForms(){</span>
+    <span class="s1">document.getElementById('registerForm').addEventListener('submit', e =&gt; {</span>
+      <span class="s1">e.preventDefault();</span>
+      <span class="s1">const err = Auth.register(</span>
+        <span class="s1">document.getElementById('regEmail').value,</span>
+        <span class="s1">document.getElementById('regLogin').value,</span>
+        <span class="s1">document.getElementById('regPassword').value,</span>
+        <span class="s1">document.getElementById('regPassword2').value</span>
+      <span class="s1">);</span>
+      <span class="s1">if(err){ document.getElementById('regError').textContent = err; return; }</span>
+      <span class="s1">document.getElementById('regError').textContent='';</span>
+      <span class="s1">e.target.reset(); Sounds.play('happy'); go('home');</span>
+    <span class="s1">});</span>
+    <span class="s1">document.getElementById('loginForm').addEventListener('submit', e =&gt; {</span>
+      <span class="s1">e.preventDefault();</span>
+      <span class="s1">const err = Auth.tryLogin(document.getElementById('logLogin').value, document.getElementById('logPassword').value);</span>
+      <span class="s1">if(err){ document.getElementById('logError').textContent=err; return; }</span>
+      <span class="s1">document.getElementById('logError').textContent='';</span>
+      <span class="s1">e.target.reset(); Sounds.play('happy'); go('home');</span>
+    <span class="s1">});</span>
+    <span class="s1">document.getElementById('forgotForm').addEventListener('submit', e =&gt; {</span>
+      <span class="s1">e.preventDefault();</span>
+      <span class="s1">const res = Auth.requestReset(document.getElementById('forgotEmail').value);</span>
+      <span class="s1">const errEl = document.getElementById('forgotError');</span>
+      <span class="s1">if(res.error){ errEl.textContent=res.error; return; }</span>
+      <span class="s1">errEl.textContent=''; pendingResetLogin = res.login;</span>
+      <span class="s1">document.getElementById('resetHint').textContent = `Демо: код ${res.code}`;</span>
+      <span class="s1">alert(`📨 Демо-письмо!\nКод: ${res.code}`);</span>
+      <span class="s1">e.target.reset(); go('reset');</span>
+    <span class="s1">});</span>
+    <span class="s1">document.getElementById('resetForm').addEventListener('submit', e =&gt; {</span>
+      <span class="s1">e.preventDefault();</span>
+      <span class="s1">const err = Auth.confirmReset(pendingResetLogin, document.getElementById('resetCode').value, document.getElementById('resetPassword').value);</span>
+      <span class="s1">if(err){ document.getElementById('resetError').textContent=err; return; }</span>
+      <span class="s1">document.getElementById('resetError').textContent='';</span>
+      <span class="s1">e.target.reset(); alert('✅ Пароль изменён!'); pendingResetLogin=null; go('login');</span>
+    <span class="s1">});</span>
+
+    <span class="s1">document.getElementById('modalCancel').onclick = () =&gt; closeModal('chooseModal');</span>
+    <span class="s1">document.getElementById('chooseModal').addEventListener('click', e =&gt; { if(e.target.id==='chooseModal') closeModal('chooseModal'); });</span>
+    <span class="s1">document.getElementById('modalConfirm').onclick = () =&gt; {</span>
+      <span class="s1">if(!pendingSpecies) return;</span>
+      <span class="s1">closeModal('chooseModal');</span>
+      <span class="s1">pendingNameSpecies = pendingSpecies;</span>
+      <span class="s1">document.getElementById('namePetImg').textContent = pendingSpecies.emoji;</span>
+      <span class="s1">document.getElementById('namePetInput').value = pendingSpecies.defaultName;</span>
+      <span class="s1">openModal('namePetModal');</span>
+    <span class="s1">};</span>
+
+    <span class="s1">document.getElementById('namePetCancel').onclick = () =&gt; { closeModal('namePetModal'); pendingNameSpecies=null; };</span>
+    <span class="s1">document.getElementById('namePetConfirm').onclick = () =&gt; {</span>
+      <span class="s1">if(!pendingNameSpecies) return;</span>
+      <span class="s1">const name = (document.getElementById('namePetInput').value||'').trim() || pendingNameSpecies.defaultName;</span>
+      <span class="s1">const user = Auth.currentUser();</span>
+      <span class="s1">const newPet = {</span>
+        <span class="s1">uid: Auth.uid(pendingNameSpecies.id),</span>
+        <span class="s1">type: pendingNameSpecies.id,</span>
+        <span class="s1">name,</span>
+        <span class="s1">hunger: pendingNameSpecies.hunger,</span>
+        <span class="s1">mood: pendingNameSpecies.mood,</span>
+        <span class="s1">diary: [],</span>
+        <span class="s1">lastDiaryDate: null,</span>
+        <span class="s1">createdAt: Date.now()</span>
+      <span class="s1">};</span>
+      <span class="s1">Auth.updateUser(user.login, { pets: [...(user.pets||[]), newPet], activePetUid: newPet.uid });</span>
+      <span class="s1">Auth.addStat('petsCount');</span>
+      <span class="s1">closeModal('namePetModal');</span>
+      <span class="s1">Sounds.play('happy');</span>
+      <span class="s1">pendingNameSpecies=null;</span>
+      <span class="s1">checkAchievements();</span>
+      <span class="s1">go('room');</span>
+    <span class="s1">};</span>
+
+    <span class="s1">document.getElementById('buyPetCancel').onclick = () =&gt; { closeModal('buyPetModal'); pendingBuySpecies=null; };</span>
+    <span class="s1">document.getElementById('buyPetConfirm').onclick = () =&gt; {</span>
+      <span class="s1">if(!pendingBuySpecies) return;</span>
+      <span class="s1">const user = Auth.currentUser();</span>
+      <span class="s1">if(user.coins &lt; pendingBuySpecies.price){ alert('💸 Не хватает монет!'); return; }</span>
+      <span class="s1">Auth.updateUser(user.login, { coins: user.coins - pendingBuySpecies.price });</span>
+      <span class="s1">closeModal('buyPetModal');</span>
+      <span class="s1">pendingNameSpecies = pendingBuySpecies;</span>
+      <span class="s1">pendingBuySpecies = null;</span>
+      <span class="s1">document.getElementById('namePetImg').textContent = pendingNameSpecies.emoji;</span>
+      <span class="s1">document.getElementById('namePetInput').value = pendingNameSpecies.defaultName;</span>
+      <span class="s1">openModal('namePetModal');</span>
+      <span class="s1">Sounds.play('coin');</span>
+    <span class="s1">};</span>
+  <span class="s1">}</span>
+
+  <span class="s1">function init(){</span>
+    <span class="s1">initForms();</span>
+    <span class="s1">renderHeader();</span>
+    <span class="s1">renderHome();</span>
+
+    <span class="s1">setInterval(() =&gt; {</span>
+      <span class="s1">const user = Auth.currentUser(); if(!user || !user.pets || user.pets.length===0) return;</span>
+      <span class="s1">let changed = false;</span>
+      <span class="s1">user.pets.forEach(p =&gt; {</span>
+        <span class="s1">if(p.hunger &gt; 0){ p.hunger = Math.max(0, p.hunger-1); changed = true; }</span>
+        <span class="s1">if(p.mood &gt; 0 &amp;&amp; p.hunger &gt; 30){ p.mood = Math.max(0, p.mood-1); changed = true; }</span>
+      <span class="s1">});</span>
+      <span class="s1">if(changed){</span>
+        <span class="s1">Auth.updateUser(user.login, { pets: user.pets });</span>
+        <span class="s1">if(currentScreen === 'room')  renderRoom();</span>
+        <span class="s1">if(currentScreen === 'rooms') renderHotel();</span>
+      <span class="s1">}</span>
+    <span class="s1">}, 60000);</span>
+
+    <span class="s1">setInterval(() =&gt; {</span>
+      <span class="s1">if(currentScreen === 'room'){</span>
+        <span class="s1">const room = document.getElementById('roomStage'); if(!room) return;</span>
+        <span class="s1">room.classList.remove('time-morning','time-day','time-evening','time-night');</span>
+        <span class="s1">room.classList.add(getTimeClass());</span>
+      <span class="s1">}</span>
+    <span class="s1">}, 5*60*1000);</span>
+  <span class="s1">}</span>
+
+  <span class="s1">return { go, init, toggleSound, startGame };</span>
+<span class="s1">})();</span>
+
+<span class="s1">document.addEventListener('DOMContentLoaded', () =&gt; App.init());</span>
+<span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>
